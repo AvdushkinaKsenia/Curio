@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/%D0%A1urio/static/css/main.acda9673.css",
+    "main.js": "/%D0%A1urio/static/js/main.3da53cfc.js",
+    "index.html": "/%D0%A1urio/index.html",
+    "main.acda9673.css.map": "/%D0%A1urio/static/css/main.acda9673.css.map",
+    "main.3da53cfc.js.map": "/%D0%A1urio/static/js/main.3da53cfc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.acda9673.css",
+    "static/js/main.3da53cfc.js"
+  ]
+}
