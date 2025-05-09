@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Curio/static/css/main.acda9673.css",
-    "main.js": "/Curio/static/js/main.f6596285.js",
+    "main.js": "/Curio/static/js/main.bc3cf409.js",
     "index.html": "/Curio/index.html",
     "main.acda9673.css.map": "/Curio/static/css/main.acda9673.css.map",
-    "main.f6596285.js.map": "/Curio/static/js/main.f6596285.js.map"
+    "main.bc3cf409.js.map": "/Curio/static/js/main.bc3cf409.js.map"
   },
   "entrypoints": [
     "static/css/main.acda9673.css",
-    "static/js/main.f6596285.js"
+    "static/js/main.bc3cf409.js"
   ]
 }
