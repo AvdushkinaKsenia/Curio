@@ -22,7 +22,7 @@ const AgeStep: React.FC<AgeStepProps> = ({ age, setAge, onNext, name }) => {
         <img src={CurioQuestion} alt="Кьюрио" className={styles.characterImage} />
       </div>
       <div className={styles.formSection}>
-        <h1>Отлично! {name}, сколько тебе лет?</h1>
+        <h1>Отлично! <span className={styles.curioText}>{name}</span>, сколько тебе лет?</h1>
         <div className={styles.ageOptions}>
           {ageGroups.map((group) => (
             <label key={group.id} className={styles.ageOption}>

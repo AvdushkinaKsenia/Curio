@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import NameStep from '../components/Registration/NameStep';
 import AgeStep from '../components/Registration/AgeStep';
@@ -12,9 +13,20 @@ const HomePage: React.FC = () => {
     age: null as number | null
   });
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
-  const handleNext = () => setStep(prev => prev + 1);
-  const handleModalClose = () => setShowModal(false);
+  const handleNext = () => {
+    if (step < 3) {
+      setStep(prev => prev + 1);
+    } else {
+      setShowModal(true); // Показываем модальное окно после шага 3
+    }
+  };
+
+  const handleModalClose = () => {
+    setShowModal(false);
+    navigate('/games'); // Переход при закрытии модального окна
+  };
 
   return (
     <div className="page">
@@ -37,10 +49,9 @@ const HomePage: React.FC = () => {
         />
       )}
       
-      {step === 3 && <LoadingStep onComplete={() => {
-        handleNext();
-        setShowModal(true);
-      }} />}
+      {step === 3 && (
+        <LoadingStep onComplete={handleNext} />
+      )}
       
       {showModal && (
         <GameSelectionModal onClose={handleModalClose} />

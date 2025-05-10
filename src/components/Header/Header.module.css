@@ -3,19 +3,12 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: #4CAF50;
-  color: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.logoContainer {
-  font-size: 1.5rem;
-  font-weight: bold;
+  background-color: #FFDCC3;
+  box-shadow: 0 2px 4px rgba(229,107,46,0.2);
 }
 
 .logo {
-  color: white;
-  text-decoration: none;
+  width: 120px;
 }
 
 .nav {
@@ -24,14 +17,18 @@
 }
 
 .link {
-  color: white;
+  color: #3D0000;
   text-decoration: none;
   font-size: 1.1rem;
   transition: opacity 0.2s;
+  padding: 6px;
+  border-radius: 8px;
 }
 
 .link:hover {
-  opacity: 0.8;
+  background-color: #FF8F40;
+  color: white;
+  font-weight: bold;
 }
 
 .user {
@@ -44,7 +41,7 @@
   height: 40px;
   border-radius: 50%;
   background-color: white;
-  color: #4CAF50;
+  color: #FF8F40;
   display: flex;
   align-items: center;
   justify-content: center;
