@@ -11,7 +11,7 @@ const NameStep: React.FC<NameStepProps> = ({ name, setName, onNext }) => {
   return (
     <div className={styles.registrationContainer}>
       <div className={styles.characterSection}>
-        <img src="/images/CurioWave.png" alt="Кьюрио" className={styles.characterImage} />
+        <img src="./images/CurioWave.png" alt="Кьюрио" className={styles.characterImage} />
       </div>
       <div className={styles.formSection}>
         <h1>Привет! Я Кьюрио.</h1>
