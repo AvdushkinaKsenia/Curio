@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Registration.module.css';
+import CurioWave from '../../assets/CurioWave.svg';
 
 interface NameStepProps {
   name: string;
@@ -10,12 +11,12 @@ interface NameStepProps {
 const NameStep: React.FC<NameStepProps> = ({ name, setName, onNext }) => {
   return (
     <div className={styles.registrationContainer}>
-      <div className={styles.characterSection}>
-        <img src="/images/CurioWave.png" alt="Кьюрио" className={styles.characterImage} />
+      <div className={`${styles.characterSection} ${styles.characterSectionName}`}>
+        <img src={CurioWave} alt="Кьюрио" className={styles.characterImage} />
       </div>
       <div className={styles.formSection}>
-        <h1>Привет! Я Кьюрио.</h1>
-        <p>А как тебя зовут?</p>
+        <h1 className={styles.title}>Привет! Я <span className={styles.curioText}>Кьюрио</span>.</h1>
+        <p className={styles.subtitle}>А как тебя зовут?</p>
         <input
           type="text"
           value={name}

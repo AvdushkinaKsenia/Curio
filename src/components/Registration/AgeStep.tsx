@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Registration.module.css';
+import CurioQuestion from '../../assets/CurioQuestion.svg';
 
 interface AgeStepProps {
   age: number | null;
@@ -17,8 +18,8 @@ const ageGroups = [
 const AgeStep: React.FC<AgeStepProps> = ({ age, setAge, onNext, name }) => {
   return (
     <div className={styles.registrationContainer}>
-      <div className={styles.characterSection}>
-        <img src="/images/curio.png" alt="Кьюрио" className={styles.characterImage} />
+      <div className={`${styles.characterSection} ${styles.characterSectionAge}`}>
+        <img src={CurioQuestion} alt="Кьюрио" className={styles.characterImage} />
       </div>
       <div className={styles.formSection}>
         <h1>Отлично! {name}, сколько тебе лет?</h1>

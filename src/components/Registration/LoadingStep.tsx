@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styles from './Registration.module.css';
+import CurioPlay from '../../assets/CurioPlay.svg';
 
 interface LoadingStepProps {
   onComplete: () => void;
@@ -15,7 +16,7 @@ const LoadingStep: React.FC<LoadingStepProps> = ({ onComplete }) => {
 
   return (
     <div className={styles.loadingContainer}>
-      <img src="/images/curio.png" alt="Кьюрио" className={styles.loadingCharacter} />
+      <img src={CurioPlay} alt="Кьюрио" className={styles.loadingCharacter} />
       <h1>Ищу для тебя игры...</h1>
       <div className={styles.loadingBar}>
         <div className={styles.loadingProgress} />
