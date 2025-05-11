@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Curio/static/css/main.93bf90b1.css",
-    "main.js": "/Curio/static/js/main.4022e2cf.js",
+    "main.css": "/Curio/static/css/main.498e9128.css",
+    "main.js": "/Curio/static/js/main.14de48f2.js",
     "static/media/Logo.svg": "/Curio/static/media/Logo.260ca3bb5a3b747043d426c922e8b8dd.svg",
     "static/media/CurioQuestion.svg": "/Curio/static/media/CurioQuestion.b15f82e4d3650cc34d530ba992450a28.svg",
     "static/media/CurioPlay.svg": "/Curio/static/media/CurioPlay.0c26d6c3593e32350e7bc4bd66c59a9c.svg",
@@ -9,11 +9,11 @@
     "static/media/CurioModule.svg": "/Curio/static/media/CurioModule.6b45dac47fe28a5514764b828d016f66.svg",
     "static/media/CurioWave.svg": "/Curio/static/media/CurioWave.893d8d10b7ab5c3a27b6a867fd131890.svg",
     "index.html": "/Curio/index.html",
-    "main.93bf90b1.css.map": "/Curio/static/css/main.93bf90b1.css.map",
-    "main.4022e2cf.js.map": "/Curio/static/js/main.4022e2cf.js.map"
+    "main.498e9128.css.map": "/Curio/static/css/main.498e9128.css.map",
+    "main.14de48f2.js.map": "/Curio/static/js/main.14de48f2.js.map"
   },
   "entrypoints": [
-    "static/css/main.93bf90b1.css",
-    "static/js/main.4022e2cf.js"
+    "static/css/main.498e9128.css",
+    "static/js/main.14de48f2.js"
   ]
 }
