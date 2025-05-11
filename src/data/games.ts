@@ -80,7 +80,7 @@ export const categories: Category[] = [
     id: 1,
     title: "Фигуры",
     image: "https://s3-prod-web-app.logiclike.com/v3assets/traceShapes@opt-CIDdc7NZ.svg",
-    link: "/category/figures"
+    link: "../pages/category/figures"
   },
   {
     id: 2,

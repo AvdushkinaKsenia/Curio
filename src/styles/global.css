@@ -33,16 +33,31 @@ button:disabled {
 
 .gamesContainer, .categoriesContainer, .aboutContainer {
   padding: 2rem;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .gamesGrid, .categoriesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 2rem;
   margin-top: 2rem;
+  min-width: 250px;
+  max-width: 0.8fr;
 }
+
+/* Для игр - 2 колонки */
+.gamesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+/* Для категорий - 3 колонки */
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+
 
 .aboutContent {
   display: flex;
@@ -67,5 +82,9 @@ button:disabled {
   
   .aboutImage {
     width: 200px;
+  }
+
+  .gamesGrid, .categoriesGrid {
+    grid-template-columns: 1fr;
   }
 }

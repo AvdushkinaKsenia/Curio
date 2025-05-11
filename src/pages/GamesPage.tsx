@@ -6,7 +6,7 @@ import { games } from '../data/games';
 
 const GamesPage: React.FC = () => {
   const handleGameClick = (link: string) => {
-    window.location.href = link;
+    window.open(link, '_blank')
   };
 
   return (

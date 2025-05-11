@@ -33,7 +33,7 @@ export const GamesList = ({ games, categoryTitle }: GamesListProps) => {
         ))}
       </div>
 
-      <style jsx>{`
+      <style>{`
         .games-page {
           max-width: 1200px;
           margin: 0 auto;
