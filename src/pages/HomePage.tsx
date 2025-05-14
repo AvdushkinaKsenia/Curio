@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
     if (step < 3) {
       setStep(prev => prev + 1);
     } else {
-      setShowModal(true); // Показываем модальное окно после шага 3
+      setShowModal(true);
     }
   };
 
@@ -31,7 +31,7 @@ const HomePage: React.FC = () => {
   return (
     <div className="page">
       {step > 3 && <Header />}
-      
+
       {step === 1 && (
         <NameStep
           name={user.name}
@@ -39,7 +39,7 @@ const HomePage: React.FC = () => {
           onNext={handleNext}
         />
       )}
-      
+
       {step === 2 && (
         <AgeStep
           age={user.age}
@@ -48,11 +48,11 @@ const HomePage: React.FC = () => {
           name={user.name}
         />
       )}
-      
+
       {step === 3 && (
         <LoadingStep onComplete={handleNext} />
       )}
-      
+
       {showModal && (
         <GameSelectionModal onClose={handleModalClose} />
       )}
