@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/Curio/static/css/main.498e9128.css",
-    "main.js": "/Curio/static/js/main.14de48f2.js",
-    "static/media/Logo.svg": "/Curio/static/media/Logo.260ca3bb5a3b747043d426c922e8b8dd.svg",
-    "static/media/CurioQuestion.svg": "/Curio/static/media/CurioQuestion.b15f82e4d3650cc34d530ba992450a28.svg",
-    "static/media/CurioPlay.svg": "/Curio/static/media/CurioPlay.0c26d6c3593e32350e7bc4bd66c59a9c.svg",
-    "static/media/CurioAbout.svg": "/Curio/static/media/CurioAbout.a08818edd5477a16370d37ebf6ca1453.svg",
-    "static/media/CurioModule.svg": "/Curio/static/media/CurioModule.6b45dac47fe28a5514764b828d016f66.svg",
-    "static/media/CurioWave.svg": "/Curio/static/media/CurioWave.893d8d10b7ab5c3a27b6a867fd131890.svg",
+    "main.css": "/Curio/static/css/main.d5dc47e1.css",
+    "main.js": "/Curio/static/js/main.da7bdd82.js",
+    "static/media/Logo.svg": "/Curio/static/media/Logo.389b70f5f855e2b7261a6390ed4a577e.svg",
+    "static/media/CurioQuestion.svg": "/Curio/static/media/CurioQuestion.0b5a6bf182b96cbbadabce84b34b4b7b.svg",
+    "static/media/CurioPlay.svg": "/Curio/static/media/CurioPlay.0f69c0120f32df27738a00c492fefed8.svg",
+    "static/media/CurioAbout.svg": "/Curio/static/media/CurioAbout.b28430df13482f0d35b1adffd632cf2f.svg",
+    "static/media/CurioModule.svg": "/Curio/static/media/CurioModule.cf4eb88dd5f928c105011b8a1d1e580f.svg",
+    "static/media/CurioWave.svg": "/Curio/static/media/CurioWave.bd8a03569a30ee396ea5fa88a8510f54.svg",
     "index.html": "/Curio/index.html",
-    "main.498e9128.css.map": "/Curio/static/css/main.498e9128.css.map",
-    "main.14de48f2.js.map": "/Curio/static/js/main.14de48f2.js.map"
+    "main.d5dc47e1.css.map": "/Curio/static/css/main.d5dc47e1.css.map",
+    "main.da7bdd82.js.map": "/Curio/static/js/main.da7bdd82.js.map"
   },
   "entrypoints": [
-    "static/css/main.498e9128.css",
-    "static/js/main.14de48f2.js"
+    "static/css/main.d5dc47e1.css",
+    "static/js/main.da7bdd82.js"
   ]
 }
