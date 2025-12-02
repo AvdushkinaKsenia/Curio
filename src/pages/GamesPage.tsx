@@ -2,20 +2,53 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import GameCard from '../components/GameCard/GameCard';
-import { games } from '../data/games';
+
+interface Game {
+  id: number;
+  title: string;
+  image: string;
+  category: string;
+  ageGroup: number[];
+  description: string;
+  link: string;
+}
 
 const GamesPage: React.FC = () => {
   const location = useLocation();
-  const [filteredGames, setFilteredGames] = useState(games);
+  const [games, setGames] = useState<Game[]>([]);
+  const [filteredGames, setFilteredGames] = useState<Game[]>([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
+  // Подгрузка JSON
+  useEffect(() => {
+    fetch('/Curio/data/games.json')
+      .then(res => res.json())
+      .then(data => {
+        setGames(data);
+        setFilteredGames(data);
+      })
+      .catch(err => console.error('Ошибка загрузки игр:', err));
+  }, []);
+
+  // Фильтрация по категории и поиску
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const category = queryParams.get('category');
+
+    let filtered = games;
+
     if (category) {
-      const filtered = games.filter(game => game.category === category);
-      setFilteredGames(filtered);
+      filtered = filtered.filter(game => game.category === category);
     }
-  }, [location.search]);
+
+    if (searchTerm.trim() !== '') {
+      filtered = filtered.filter(game =>
+        game.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    setFilteredGames(filtered);
+  }, [games, location.search, searchTerm]);
 
   const handleGameClick = (link: string) => {
     window.open(link, '_blank');
@@ -23,17 +56,23 @@ const GamesPage: React.FC = () => {
 
   return (
     <div className="page">
-      <Header />
+      {/* Передаём searchTerm и setSearchTerm в Header */}
+      <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      
       <main className="gamesContainer">
         <h1>Игры для тебя</h1>
         <div className="gamesGrid">
-          {filteredGames.map((game) => (
-            <GameCard
-              key={game.id}
-              game={game}
-              onClick={() => handleGameClick(game.link)}
-            />
-          ))}
+          {filteredGames.length > 0 ? (
+            filteredGames.map(game => (
+              <GameCard
+                key={game.id}
+                game={game}
+                onClick={() => handleGameClick(game.link)}
+              />
+            ))
+          ) : (
+            <p>Игры не найдены 😔</p>
+          )}
         </div>
       </main>
     </div>

@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "title": "Приключение крысок: Путь к дружбе",
+        "image": "https://img.itch.zone/aW1nLzE4OTg5Mjc5LnBuZw==/315x250%23c/4RszN6.png",
+        "category": "Развивающие",
+        "ageGroup": [
+            4,
+            5,
+            6,
+            7
+        ],
+        "description": "Увлекательное приключение о дружбе",
+        "link": "https://strawbebby228.itch.io/ratsadventure"
+    },
+    {
+        "id": 2,
+        "title": "Головоломка лесного духа",
+        "image": "https://img.itch.zone/aW1nLzEzNzUxODk5LnBuZw==/315x250%23c/forest_puzzle.png",
+        "category": "Головоломки",
+        "ageGroup": [
+            6,
+            7,
+            8
+        ],
+        "description": "Красочная логическая игра для развития внимательности",
+        "link": "https://example.com/forest-spirit-puzzle"
+    }
+]
