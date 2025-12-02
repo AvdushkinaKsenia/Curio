@@ -1,3 +1,4 @@
+/* Общие стили */
 body {
   margin: 0;
   font-family: "Balsamiq Sans", sans-serif;
@@ -6,15 +7,15 @@ body {
   color: #3D0000;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: #FFFCFB;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 button {
@@ -31,34 +32,52 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.gamesContainer, .categoriesContainer, .aboutContainer {
+/* Контейнеры страниц */
+.gamesContainer,
+.categoriesContainer,
+.aboutContainer {
   padding: 2rem;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.gamesGrid, .categoriesGrid {
-  margin-top: 2rem;
-  min-width: 250px;
-  max-width: 0.8fr;
+/* Заголовок страницы чуть правее */
+.gamesHeader {
+  margin-left: 200px; /* Отступ справа от бокового меню */
+  margin-bottom: 1rem;
 }
 
-/* Для игр - 2 колонки */
+/* Wrapper для GamesPage: боковое меню + сетка игр */
+.gamesPageWrapper {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start; /* Чтобы меню не растягивалось */
+}
+
+/* Сетка игр — 3 колонки */
 .gamesGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+  flex: 1;
 }
 
-/* Для категорий - 3 колонки */
+/* Боковое меню категорий */
+.categoriesSidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: fit-content; /* меню по размеру контента */
+}
+
+/* Сетка категорий (если используется отдельно) */
 .categoriesGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
-
-
+/* About Page */
 .aboutContent {
   display: flex;
   gap: 3rem;
@@ -75,25 +94,39 @@ button:disabled {
   line-height: 1.6;
 }
 
+/* Мобильная версия */
+@media (max-width: 1024px) {
+  .gamesPageWrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gamesHeader {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .gamesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .categoriesSidebar {
+    width: 100%;
+    max-height: none;
+    align-items: center;
+  }
+}
+
 @media (max-width: 768px) {
   .aboutContent {
     flex-direction: column;
   }
-  
+
   .aboutImage {
     width: 200px;
   }
 
-  .categoriesContainer {
-    padding: 2rem;
-    max-width: 1200px; /* увеличиваем ширину для сетки 3 колонок */
-    margin: 0 auto;
-  }
-
   .categoriesGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
+    grid-template-columns: 1fr;
   }
 }

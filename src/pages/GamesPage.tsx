@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import GameCard from '../components/GameCard/GameCard';
+import CategoriesSidebar from '../components/CategorySidebar/CategoriesSidebar';
+import CategoryCard from '../components/CategoryCard/CategoryCard';
+import { Category } from '../types/game';
 
 export interface Game {
   id: number;
@@ -9,18 +11,20 @@ export interface Game {
   image: string;
   category: string;
   ageGroup: number[];
-  shortDescription: string; // краткое описание для карточки
-  longDescription: string;  // длинное описание для поиска/детальной информации
+  shortDescription: string;
+  longDescription: string;
   link: string;
 }
 
 const GamesPage: React.FC = () => {
-  const location = useLocation();
   const [games, setGames] = useState<Game[]>([]);
   const [filteredGames, setFilteredGames] = useState<Game[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [showAllCategories, setShowAllCategories] = useState(false);
 
-  // Подгрузка JSON и формирование short/long описания
+  // Загрузка игр
   useEffect(() => {
     fetch('/Curio/data/games.json')
       .then(res => res.json())
@@ -36,50 +40,96 @@ const GamesPage: React.FC = () => {
       .catch(err => console.error('Ошибка загрузки игр:', err));
   }, []);
 
-  // Фильтрация по категории и поиску
+  // Загрузка категорий
   useEffect(() => {
-    const queryParams = new URLSearchParams(location.search);
-    const category = queryParams.get('category');
+    fetch('/Curio/data/categories.json')
+      .then(res => res.json())
+      .then(data => setCategories(data))
+      .catch(err => console.error('Ошибка загрузки категорий:', err));
+  }, []);
 
-    let filtered = games;
+  // Фильтрация игр по категории и поиску
+  useEffect(() => {
+    let filtered = [...games];
 
-    if (category) {
-      filtered = filtered.filter(game => game.category === category);
+    // Фильтрация по категории
+    if (selectedCategory && !showAllCategories) {
+      filtered = filtered.filter(game => game.category === selectedCategory);
     }
 
+    // Фильтрация по поиску
     if (searchTerm.trim() !== '') {
-      const term = searchTerm.toLowerCase();
       filtered = filtered.filter(game =>
-        game.title.toLowerCase().includes(term) ||
-        game.longDescription.toLowerCase().includes(term)
+        game.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
     setFilteredGames(filtered);
-  }, [games, location.search, searchTerm]);
+  }, [games, selectedCategory, showAllCategories, searchTerm]);
 
   const handleGameClick = (link: string) => {
     window.open(link, '_blank');
   };
+
+  const headerTitle = showAllCategories
+    ? 'Все категории'
+    : selectedCategory
+    ? `Категория: ${selectedCategory}`
+    : 'Игры для тебя';
 
   return (
     <div className="page">
       <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
       <main className="gamesContainer">
-        <h1>Игры для тебя</h1>
-        <div className="gamesGrid">
-          {filteredGames.length > 0 ? (
-            filteredGames.map(game => (
-              <GameCard
-                key={game.id}
-                game={game}
-                onClick={() => handleGameClick(game.link)}
-              />
-            ))
-          ) : (
-            <p>Игры не найдены 😔</p>
-          )}
+        <div className="gamesPageWrapper">
+          {/* Боковое меню */}
+          <CategoriesSidebar
+            onSelectCategory={(cat: string | null | 'allCategories') => {
+              if (cat === 'allCategories') {
+                setShowAllCategories(true);
+                setSelectedCategory(null);
+              } else {
+                setShowAllCategories(false);
+                setSelectedCategory(cat);
+              }
+            }}
+            selectedCategory={showAllCategories ? 'allCategories' : selectedCategory}
+          />
+
+          {/* Правая колонка */}
+          <div style={{ flex: 1 }}>
+            <h1>{headerTitle}</h1>
+
+            {showAllCategories ? (
+              <div className="categoriesGrid">
+                {categories.map(category => (
+                  <CategoryCard
+                    key={category.id}
+                    category={category}
+                    onClick={() => {
+                      setSelectedCategory(category.title);
+                      setShowAllCategories(false);
+                    }}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="gamesGrid">
+                {filteredGames.length > 0 ? (
+                  filteredGames.map(game => (
+                    <GameCard
+                      key={game.id}
+                      game={game}
+                      onClick={() => handleGameClick(game.link)}
+                    />
+                  ))
+                ) : (
+                  <p>Игры не найдены 😔</p>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </main>
     </div>

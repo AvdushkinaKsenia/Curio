@@ -1,22 +1,402 @@
 [
-    {
-        "id": 1,
-        "title": "Приключение крысок: Путь к дружбе",
-        "image": "https://img.itch.zone/aW1nLzE4OTg5Mjc5LnBuZw==/315x250%23c/4RszN6.png",
-        "category": "Развивающие",
-        "ageGroup": [4, 5, 6, 7],
-        "shortDescription": "Увлекательное приключение о дружбе",
-        "longDescription": "Это увлекательное приключение о дружбе маленьких крысок, где игрок исследует мир, решает задачи и помогает персонажам преодолевать трудности. Игра развивает внимательность, кооперацию и эмпатию у детей.",
-        "link": "https://strawbebby228.itch.io/ratsadventure"
-    },
-    {
-        "id": 2,
-        "title": "Головоломка лесного духа",
-        "image": "/Curio/images/games/forest_spirit.jpg",
-        "category": "Головоломки",
-        "ageGroup": [6, 7, 8],
-        "shortDescription": "Красочная логическая игра для развития внимательности",
-        "longDescription": "Игрок решает головоломки в волшебном лесном мире, развивая внимательность, логическое мышление и память. Особенности: последовательности, цветовые головоломки и поиск объектов. Игра подходит для детей 6–8 лет и помогает развивать когнитивные навыки.",
-        "link": "https://example.com/forest-spirit-puzzle"
-    }
+  {
+    "id": 1,
+    "title": "Приключение крысок: Путь к дружбе",
+    "image": "https://img.itch.zone/aW1nLzE4OTg5Mjc5LnBuZw==/315x250%23c/4RszN6.png",
+    "category": "Развивающие",
+    "ageGroup": [4, 5, 6, 7],
+    "shortDescription": "Увлекательное приключение о дружбе",
+    "longDescription": "Это увлекательное приключение о дружбе маленьких крысок, где игрок исследует мир, решает задачи и помогает персонажам преодолевать трудности. Игра развивает внимательность, кооперацию и эмпатию у детей.",
+    "link": "https://strawbebby228.itch.io/ratsadventure"
+  },
+  {
+    "id": 2,
+    "title": "Головоломка лесного духа",
+    "image": "/Curio/images/games/forest_spirit.jpg",
+    "category": "Головоломки",
+    "ageGroup": [6, 7, 8],
+    "shortDescription": "Красочная логическая игра для развития внимательности",
+    "longDescription": "Игрок решает головоломки в волшебном лесном мире, развивая внимательность, логическое мышление и память. Особенности: последовательности, цветовые головоломки и поиск объектов. Игра подходит для детей 6–8 лет и помогает развивать когнитивные навыки.",
+    "link": "https://example.com/forest-spirit-puzzle"
+  },
+  {
+    "id": 3,
+    "title": "Лабиринт чисел",
+    "image": "/Curio/images/games/number_maze.png",
+    "category": "Математика",
+    "ageGroup": [6,7,8],
+    "shortDescription": "Весёлый лабиринт с числами",
+    "longDescription": "Лабиринт чисел — увлекательная математическая игра для детей 6-8 лет. Развивает внимательность, логическое мышление и навыки счета. Игроки учатся складывать и вычитать числа, находить оптимальный путь через сложные лабиринты, что делает обучение увлекательным и интерактивным.",
+    "link": "https://example.com/number-maze"
+  },
+  {
+    "id": 4,
+    "title": "Цветной пазл леса",
+    "image": "/Curio/images/games/forest_puzzle.png",
+    "category": "Головоломки",
+    "ageGroup": [5,6,7],
+    "shortDescription": "Красочный лесной пазл",
+    "longDescription": "Цветной пазл леса — логическая игра для детей 5-7 лет. Развивает внимание, память и способность к визуальному анализу. Игроки собирают картинки лесных животных и растений, улучшая координацию и пространственное мышление. Идеально подходит для интерактивного обучения и развития концентрации.",
+    "link": "https://example.com/forest-color-puzzle"
+  },
+  {
+    "id": 5,
+    "title": "Математическая башня",
+    "image": "/Curio/images/games/math_tower.png",
+    "category": "Математика",
+    "ageGroup": [6,7,8],
+    "shortDescription": "Собери башню из чисел",
+    "longDescription": "Математическая башня — увлекательная игра для детей 6-8 лет. Развивает логическое мышление, навыки сложения и вычитания, внимание и концентрацию. Игроки строят башню, выбирая правильные числа, чтобы не разрушить конструкцию, что делает обучение интерактивным и веселым.",
+    "link": "https://example.com/math-tower"
+  },
+  {
+    "id": 6,
+    "title": "Фигурные загадки",
+    "image": "/Curio/images/games/shape_puzzle.png",
+    "category": "Фигуры",
+    "ageGroup": [4,5,6],
+    "shortDescription": "Собери фигуры по образцу",
+    "longDescription": "Фигурные загадки — развивающая игра для детей 4-6 лет. Помогает изучать геометрические фигуры, улучшает координацию рук и визуальное восприятие. Игроки собирают разные формы по образцу, развивая пространственное мышление и внимание к деталям.",
+    "link": "https://example.com/shape-puzzle"
+  },
+  {
+    "id": 7,
+    "title": "Сказочный лес",
+    "image": "/Curio/images/games/fairy_forest.png",
+    "category": "Развивающие",
+    "ageGroup": [4,5,6,7],
+    "shortDescription": "Исследуй волшебный лес",
+    "longDescription": "Сказочный лес — развивающая игра для детей 4-7 лет. Развивает воображение, внимательность и креативность. Игроки исследуют лес, находят волшебные предметы и выполняют задания, тренируя логику и наблюдательность. Игра способствует развитию творческих навыков и концентрации.",
+    "link": "https://example.com/fairy-forest"
+  },
+  {
+    "id": 8,
+    "title": "Творческая студия",
+    "image": "/Curio/images/games/creative_studio.png",
+    "category": "Творчество",
+    "ageGroup": [5,6,7],
+    "shortDescription": "Создавай рисунки и поделки",
+    "longDescription": "Творческая студия — развивающая игра для детей 5-7 лет. Развивает воображение, креативность и мелкую моторику. Игроки создают рисунки, аппликации и поделки, используя различные инструменты и материалы, что помогает развивать художественные навыки и концентрацию.",
+    "link": "https://example.com/creative-studio"
+  },
+  {
+    "id": 9,
+    "title": "Звуковая память",
+    "image": "/Curio/images/games/sound_memory.png",
+    "category": "Головоломки",
+    "ageGroup": [5,6,7,8],
+    "shortDescription": "Запоминай звуки и последовательности",
+    "longDescription": "Звуковая память — логическая игра для детей 5-8 лет. Развивает память, внимание и слуховое восприятие. Игроки запоминают последовательности звуков и повторяют их, улучшая когнитивные способности и концентрацию.",
+    "link": "https://example.com/sound-memory"
+  },
+  {
+    "id": 10,
+    "title": "Пазл-магнит",
+    "image": "/Curio/images/games/magnet_puzzle.png",
+    "category": "Фигуры",
+    "ageGroup": [4,5,6],
+    "shortDescription": "Собери фигуры на магнитной доске",
+    "longDescription": "Пазл-магнит — развивающая игра для детей 4-6 лет. Развивает внимание, координацию рук и визуальное восприятие. Игроки собирают фигуры на магнитной доске, изучая геометрию и совершенствуя моторику.",
+    "link": "https://example.com/magnet-puzzle"
+  },
+  {
+    "id": 11,
+    "title": "Танец цветов",
+    "image": "/Curio/images/games/dance_colors.png",
+    "category": "Развивающие",
+    "ageGroup": [4,5,6,7],
+    "shortDescription": "Развивай координацию и внимание",
+    "longDescription": "Танец цветов — развивающая игра для детей 4-7 лет. Развивает внимание, координацию и креативное мышление. Игроки двигают предметы на экране, создавая узоры и композиции, что тренирует концентрацию и мелкую моторику.",
+    "link": "https://example.com/dance-colors"
+  },
+  {
+    "id": 12,
+    "title": "Логическая цепочка",
+    "image": "/Curio/images/games/logic_chain.png",
+    "category": "Головоломки",
+    "ageGroup": [6,7,8],
+    "shortDescription": "Соединяй элементы логически",
+    "longDescription": "Логическая цепочка — игра для детей 6-8 лет. Развивает логическое мышление, внимательность и навыки решения задач. Игроки соединяют элементы в правильной последовательности, что тренирует аналитические способности и концентрацию.",
+    "link": "https://example.com/logic-chain"
+  },
+  {
+    "id": 13,
+    "title": "Творческий калейдоскоп",
+    "image": "/Curio/images/games/creative_kaleidoscope.png",
+    "category": "Творчество",
+    "ageGroup": [5,6,7],
+    "shortDescription": "Создавай красивые узоры",
+    "longDescription": "Творческий калейдоскоп — развивающая игра для детей 5-7 лет. Развивает воображение, креативность и внимание. Игроки создают узоры и картинки, комбинируя формы и цвета, что улучшает художественные навыки и концентрацию.",
+    "link": "https://example.com/creative-kaleidoscope"
+  },
+  {
+    "id": 14,
+    "title": "Счет в облаках",
+    "image": "/Curio/images/games/cloud_count.png",
+    "category": "Математика",
+    "ageGroup": [4,5,6],
+    "shortDescription": "Считай облака",
+    "longDescription": "Счет в облаках — математическая игра для детей 4-6 лет. Развивает навыки счета, внимание и концентрацию. Игроки считают облака на небе, выполняют простые операции сложения и вычитания, что делает обучение легким и увлекательным.",
+    "link": "https://example.com/cloud-count"
+  },
+  {
+    "id": 15,
+    "title": "Путешествие маленьких звезд",
+    "image": "/Curio/images/games/star_journey.png",
+    "category": "Развивающие",
+    "ageGroup": [4,5,6],
+    "shortDescription": "Исследуй космос с малышами",
+    "longDescription": "Игроки помогают маленьким звёздочкам найти свой путь в космосе, решая простые задачи и развивая внимание, координацию и любопытство.",
+    "link": "https://example.com/star-journey"
+  },
+  {
+    "id": 16,
+    "title": "Пазл морских глубин",
+    "image": "/Curio/images/games/sea_puzzle.png",
+    "category": "Головоломки",
+    "ageGroup": [5,6,7],
+    "shortDescription": "Собери морской мир",
+    "longDescription": "Собирай пазлы с морскими существами и развивай логическое мышление, внимание к деталям и память.",
+    "link": "https://example.com/sea-puzzle"
+  },
+  {
+    "id": 17,
+    "title": "Башня чисел",
+    "image": "/Curio/images/games/number_tower.png",
+    "category": "Математика",
+    "ageGroup": [6,7,8],
+    "shortDescription": "Строй башню из чисел",
+    "longDescription": "Детям предстоит складывать и вычитать числа, чтобы построить устойчивую башню. Игра развивает навыки счета и логическое мышление.",
+    "link": "https://example.com/number-tower"
+  },
+  {
+    "id": 18,
+    "title": "Фигурная мозаика",
+    "image": "/Curio/images/games/shape_mosaic.png",
+    "category": "Фигуры",
+    "ageGroup": [4,5,6],
+    "shortDescription": "Создай красивую мозаику",
+    "longDescription": "Игра тренирует пространственное мышление и координацию рук, собирая фигуры в красивые узоры.",
+    "link": "https://example.com/shape-mosaic"
+  },
+  {
+    "id": 19,
+    "title": "Краски и узоры",
+    "image": "/Curio/images/games/color_patterns.png",
+    "category": "Творчество",
+    "ageGroup": [5,6,7],
+    "shortDescription": "Создавай узоры и картины",
+    "longDescription": "Развивающая игра для детей, позволяющая экспериментировать с цветами и формами, развивая воображение и мелкую моторику.",
+    "link": "https://example.com/color-patterns"
+  },
+  {
+    "id": 20,
+    "title": "Приключения в замке",
+    "image": "/Curio/images/games/castle_adventure.png",
+    "category": "Развивающие",
+    "ageGroup": [5,6,7],
+    "shortDescription": "Исследуй загадочный замок",
+    "longDescription": "Игроки помогают персонажам проходить комнаты замка, развивая внимание, память и кооперацию.",
+    "link": "https://example.com/castle-adventure"
+  },
+  {
+    "id": 21,
+    "title": "Логические лабиринты",
+    "image": "/Curio/images/games/logic_maze.png",
+    "category": "Головоломки",
+    "ageGroup": [6,7,8],
+    "shortDescription": "Пройди все лабиринты",
+    "longDescription": "Игра с разнообразными лабиринтами, развивающая внимание, память и логическое мышление.",
+    "link": "https://example.com/logic-maze"
+  },
+  {
+    "id": 22,
+    "title": "Математические джунгли",
+    "image": "/Curio/images/games/math_jungle.png",
+    "category": "Математика",
+    "ageGroup": [6,7,8],
+    "shortDescription": "Считай и решай задачки",
+    "longDescription": "Путешествуй по джунглям, выполняя задания на сложение и вычитание. Игра развивает математические навыки и внимательность.",
+    "link": "https://example.com/math-jungle"
+  },
+  {
+    "id": 23,
+    "title": "Фигурные истории",
+    "image": "/Curio/images/games/shape_stories.png",
+    "category": "Фигуры",
+    "ageGroup": [4,5,6],
+    "shortDescription": "Создавай истории из фигур",
+    "longDescription": "Собирай фигуры в истории и развивай творческое мышление, внимание и моторику.",
+    "link": "https://example.com/shape-stories"
+  },
+  {
+    "id": 24,
+    "title": "Творческий лес",
+    "image": "/Curio/images/games/creative_forest.png",
+    "category": "Творчество",
+    "ageGroup": [5,6,7],
+    "shortDescription": "Рисуй и придумывай",
+    "longDescription": "Развивающая игра для создания картин и украшений леса, развивающая воображение и креативность.",
+    "link": "https://example.com/creative-forest"
+  },
+  {
+    "id": 25,
+    "title": "Звёздный путь",
+    "image": "/Curio/images/games/star_path.png",
+    "category": "Развивающие",
+    "ageGroup": [4,5,6],
+    "shortDescription": "Следуй за звёздами",
+    "longDescription": "Игра на внимательность и координацию. Игроки помогают маленьким героям пройти путь к звёздам.",
+    "link": "https://example.com/star-path"
+  },
+  {
+    "id": 26,
+    "title": "Головоломка с замками",
+    "image": "/Curio/images/games/lock_puzzle.png",
+    "category": "Головоломки",
+    "ageGroup": [6,7,8],
+    "shortDescription": "Разгадай замковые головоломки",
+    "longDescription": "Развивает логическое мышление и внимательность, открывая разные типы замков.",
+    "link": "https://example.com/lock-puzzle"
+  },
+  {
+    "id": 27,
+    "title": "Счёт и приключения",
+    "image": "/Curio/images/games/count_adventure.png",
+    "category": "Математика",
+    "ageGroup": [5,6,7],
+    "shortDescription": "Решай задачи в приключении",
+    "longDescription": "Игроки решают математические задачки, проходя через разные уровни и задания, развивая навыки счета и внимание.",
+    "link": "https://example.com/count-adventure"
+  },
+  {
+    "id": 28,
+    "title": "Фигурная фантазия",
+    "image": "/Curio/images/games/shape_fantasy.png",
+    "category": "Фигуры",
+    "ageGroup": [4,5,6],
+    "shortDescription": "Комбинируй фигуры и создавай",
+    "longDescription": "Игра для развития пространственного мышления и творческих способностей детей.",
+    "link": "https://example.com/shape-fantasy"
+  },
+  {
+    "id": 29,
+    "title": "Рисуем мир",
+    "image": "/Curio/images/games/draw_world.png",
+    "category": "Творчество",
+    "ageGroup": [5,6,7],
+    "shortDescription": "Создай свой мир",
+    "longDescription": "Дети создают рисунки и предметы, развивая воображение, внимание и мелкую моторику.",
+    "link": "https://example.com/draw-world"
+  },
+  {
+    "id": 30,
+    "title": "Весёлые зверята",
+    "image": "/Curio/images/games/funny_animals.png",
+    "category": "Развивающие",
+    "ageGroup": [4,5,6,7],
+    "shortDescription": "Игра с животными",
+    "longDescription": "Дети заботятся о животных, развивая эмпатию, внимание и координацию.",
+    "link": "https://example.com/funny-animals"
+  },
+  {
+    "id": 31,
+    "title": "Цветные цепочки",
+    "image": "/Curio/images/games/color_chain.png",
+    "category": "Головоломки",
+    "ageGroup": [5,6,7],
+    "shortDescription": "Соединяй цвета логически",
+    "longDescription": "Игра для развития логического мышления, внимательности и памяти через соединение цветных элементов.",
+    "link": "https://example.com/color-chain"
+  },
+  {
+    "id": 32,
+    "title": "Математические острова",
+    "image": "/Curio/images/games/math_islands.png",
+    "category": "Математика",
+    "ageGroup": [6,7,8],
+    "shortDescription": "Считай на островах",
+    "longDescription": "Игра развивает навыки счета, решение задач и логическое мышление на островах с разными заданиями.",
+    "link": "https://example.com/math-islands"
+  },
+  {
+    "id": 33,
+    "title": "Фигурные приключения",
+    "image": "/Curio/images/games/shape_adventure.png",
+    "category": "Фигуры",
+    "ageGroup": [4,5,6],
+    "shortDescription": "Игра с формами и фигурами",
+    "longDescription": "Дети создают композиции из фигур, развивая внимание, координацию и воображение.",
+    "link": "https://example.com/shape-adventure"
+  },
+  {
+    "id": 34,
+    "title": "Волшебный холст",
+    "image": "/Curio/images/games/magic_canvas.png",
+    "category": "Творчество",
+    "ageGroup": [5,6,7],
+    "shortDescription": "Рисуй волшебные картины",
+    "longDescription": "Развивает креативность, воображение и мелкую моторику через создание волшебных картин.",
+    "link": "https://example.com/magic-canvas"
+  },
+  {
+    "id": 35,
+    "title": "Логические ступени",
+    "image": "/Curio/images/games/logic_steps.png",
+    "category": "Логика",
+    "ageGroup": [6,7,8],
+    "shortDescription": "Собирай элементы по логике",
+    "longDescription": "Игроки соединяют ступени в правильной последовательности, развивая аналитическое мышление, внимание и способность планировать действия.",
+    "link": "https://example.com/logic-steps"
+  },
+  {
+    "id": 36,
+    "title": "Мосты разума",
+    "image": "/Curio/images/games/logic_bridges.png",
+    "category": "Логика",
+    "ageGroup": [6,7,8],
+    "shortDescription": "Строй мосты логически",
+    "longDescription": "Дети создают мосты между платформами, соблюдая правила логики и последовательности, что развивает пространственное мышление и концентрацию.",
+    "link": "https://example.com/logic-bridges"
+  },
+  {
+    "id": 37,
+    "title": "Секретный код",
+    "image": "/Curio/images/games/logic_code.png",
+    "category": "Логика",
+    "ageGroup": [7,8,9],
+    "shortDescription": "Разгадай шифр",
+    "longDescription": "Игра учит анализировать информацию и применять логические рассуждения для расшифровки секретного кода.",
+    "link": "https://example.com/logic-code"
+  },
+  {
+    "id": 38,
+    "title": "Цепочка решений",
+    "image": "/Curio/images/games/logic_chain2.png",
+    "category": "Логика",
+    "ageGroup": [6,7,8],
+    "shortDescription": "Соединяй события логически",
+    "longDescription": "Дети создают цепочку действий, анализируя причины и следствия, что развивает стратегическое и логическое мышление.",
+    "link": "https://example.com/logic-chain2"
+  },
+  {
+    "id": 39,
+    "title": "Логический лабиринт",
+    "image": "/Curio/images/games/logic_maze2.png",
+    "category": "Логика",
+    "ageGroup": [6,7,8],
+    "shortDescription": "Пройди лабиринт, используя логику",
+    "longDescription": "Игра на внимательность и планирование, где ребёнок решает задачи, чтобы выбрать правильный путь через лабиринт.",
+    "link": "https://example.com/logic-maze2"
+  },
+  {
+    "id": 40,
+    "title": "Матемагический квест",
+    "image": "/Curio/images/games/logic_math_quest.png",
+    "category": "Логика",
+    "ageGroup": [7,8,9],
+    "shortDescription": "Решай логические задачи с числами",
+    "longDescription": "Игра сочетает математику и логику, развивая аналитические способности и умение находить закономерности.",
+    "link": "https://example.com/logic-math-quest"
+  }
 ]

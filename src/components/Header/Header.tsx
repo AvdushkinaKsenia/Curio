@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
 import Logo from '../../assets/Logo.svg';
 
@@ -9,12 +9,23 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ searchTerm, setSearchTerm }) => {
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    // Переход на страницу игр с параметром all=true
+    navigate('/games?all=true');
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-        <Link to="/">
-          <img src={Logo} alt="Кьюрио" className={styles.logo} />
-        </Link>
+        <img
+          src={Logo}
+          alt="Кьюрио"
+          className={styles.logo}
+          onClick={handleLogoClick}
+          style={{ cursor: 'pointer' }}
+        />
       </div>
 
       <div className={styles.center}>
@@ -27,14 +38,10 @@ const Header: React.FC<HeaderProps> = ({ searchTerm, setSearchTerm }) => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         )}
-        <nav className={styles.nav}>
-          <Link to="/games" className={styles.link}>Игры</Link>
-          <Link to="/categories" className={styles.link}>Категории</Link>
-          <Link to="/about" className={styles.link}>О нас</Link>
-        </nav>
       </div>
 
-      <div className={styles.user}>
+      <div className={styles.right}>
+        <Link to="/about" className={styles.link}>О нас</Link>
         <div className={styles.avatar}>👦</div>
       </div>
     </header>

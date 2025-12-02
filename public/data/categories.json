@@ -16,5 +16,23 @@
     "title": "Творчество",
     "image": "/Curio/images/categories/tvorch.jpg",
     "link": "/games?category=Творчество"
+  },
+  {
+    "id": 4,
+    "title": "Математика",
+    "image": "/Curio/images/categories/math.avif",
+    "link": "/games?category=Математика"
+  },
+  {
+    "id": 5,
+    "title": "Фигуры",
+    "image": "/Curio/images/categories/figure.jpeg",
+    "link": "/games?category=Фигуры"
+  },
+  {
+    "id": 6,
+    "title": "Логика",
+    "image": "/Curio/images/categories/logic.png",
+    "link": "/games?category=Логика"
   }
 ]

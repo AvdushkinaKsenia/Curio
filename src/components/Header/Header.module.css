@@ -12,20 +12,19 @@
 }
 
 .center {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.right {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  flex: 1 1 auto;
-  justify-content: center; /* Центрирует меню и поиск по середине */
+  gap: 1rem;
 }
 
 .logo {
   width: 100px;
-}
-
-.nav {
-  display: flex;
-  gap: 2rem;
 }
 
 .link {
@@ -44,19 +43,19 @@
 }
 
 .search-input {
-  width: 200px;         /* базовая ширина */
+  width: 200px;
   min-width: 200px;
   max-width: 400px;
-  height: 37px;         /* высота поля */
-  font-size: 15px;      /* размер текста */
-  padding: 0 12px;      /* внутренние отступы */
+  height: 37px;
+  font-size: 15px;
+  padding: 0 12px;
   border-radius: 8px;
   border: 1px solid #ddd;
   transition: width 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .search-input:focus {
-  width: 300px;       /* увеличиваем при фокусе */
+  width: 300px;
   outline: none;
   border-color: #FF8F40;
   box-shadow: 0 0 5px rgba(255,143,64,0.5);
@@ -81,7 +80,7 @@
 
 @media (max-width: 1024px) {
   .center {
-    flex-direction: column; /* на планшетах можно оставлять */
+    flex-direction: column;
     gap: 1rem;
   }
 
@@ -101,10 +100,6 @@
 
   .link {
     font-size: 0.9rem;
-  }
-
-  .nav {
-    gap: 1rem;
   }
 
   .search-input {
