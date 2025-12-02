@@ -3,13 +3,14 @@ import { useLocation } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import GameCard from '../components/GameCard/GameCard';
 
-interface Game {
+export interface Game {
   id: number;
   title: string;
   image: string;
   category: string;
   ageGroup: number[];
-  description: string;
+  shortDescription: string; // краткое описание для карточки
+  longDescription: string;  // длинное описание для поиска/детальной информации
   link: string;
 }
 
@@ -19,13 +20,18 @@ const GamesPage: React.FC = () => {
   const [filteredGames, setFilteredGames] = useState<Game[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Подгрузка JSON
+  // Подгрузка JSON и формирование short/long описания
   useEffect(() => {
     fetch('/Curio/data/games.json')
       .then(res => res.json())
       .then(data => {
-        setGames(data);
-        setFilteredGames(data);
+        const formatted = data.map((game: any) => ({
+          ...game,
+          shortDescription: game.shortDescription || game.description,
+          longDescription: game.longDescription || game.description
+        }));
+        setGames(formatted);
+        setFilteredGames(formatted);
       })
       .catch(err => console.error('Ошибка загрузки игр:', err));
   }, []);
@@ -42,8 +48,10 @@ const GamesPage: React.FC = () => {
     }
 
     if (searchTerm.trim() !== '') {
+      const term = searchTerm.toLowerCase();
       filtered = filtered.filter(game =>
-        game.title.toLowerCase().includes(searchTerm.toLowerCase())
+        game.title.toLowerCase().includes(term) ||
+        game.longDescription.toLowerCase().includes(term)
       );
     }
 
@@ -56,9 +64,8 @@ const GamesPage: React.FC = () => {
 
   return (
     <div className="page">
-      {/* Передаём searchTerm и setSearchTerm в Header */}
       <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      
+
       <main className="gamesContainer">
         <h1>Игры для тебя</h1>
         <div className="gamesGrid">

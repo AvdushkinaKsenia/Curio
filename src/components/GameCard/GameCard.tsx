@@ -1,4 +1,3 @@
-// GameCard.tsx
 import React from 'react';
 import { Game } from '../../types/game';
 import styles from './GameCard.module.css';
@@ -14,7 +13,7 @@ const GameCard: React.FC<GameCardProps> = ({ game, onClick }) => {
       <img src={game.image} alt={game.title} className={styles.image} />
       <div className={styles.content}>
         <h3 className={styles.title}>{game.title}</h3>
-        <p className={styles.description}>{game.description}</p>
+        <p className={styles.description}>{game.shortDescription}</p>
         <button className={styles.button}>Играть →</button>
       </div>
     </div>

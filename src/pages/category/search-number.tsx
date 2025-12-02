@@ -1,10 +1,12 @@
 import { GamesList } from '../../pages/GamesList';
-import { games } from '../../data/games';
+import { useGames } from '../../hooks/useGames';
 
 export default function SearchNumberPage() {
-  const numberGames = games.filter(game => game.category === 'Поиск числа');
-  
-  return (
-    <GamesList games={numberGames} categoryTitle="Поиск числа" />
-  );
+  const { games, loading } = useGames();
+
+  if (loading) return <div>Загрузка игр...</div>;
+
+  const numberGames = games.filter(game => game.category === 'Буквы');
+
+  return <GamesList games={numberGames} categoryTitle="Буквы" />;
 }

@@ -6,7 +6,8 @@ export interface Game {
   image: string;
   category: string;
   ageGroup: number[];
-  description: string;
+  shortDescription: string;
+  longDescription: string;
   link: string;
 }
 
@@ -15,7 +16,7 @@ export const useGames = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/data/games.json")
+    fetch("/Curio/data/games.json")
       .then(res => res.json())
       .then(data => {
         setGames(data);

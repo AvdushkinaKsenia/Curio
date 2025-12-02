@@ -16,7 +16,7 @@ export const GamesList = ({ games, categoryTitle }: GamesListProps) => {
             <img src={game.image} alt={game.title} className="game-image" />
             <div className="game-info">
               <h2>{game.title}</h2>
-              <p>{game.description}</p>
+              <p>{game.shortDescription}</p>
               <div className="game-meta">
                 <span>Возраст: {game.ageGroup.join('-')} лет</span>
               </div>

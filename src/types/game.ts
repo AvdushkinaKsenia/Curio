@@ -4,8 +4,9 @@ export interface Game {
   image: string;
   category: string;
   ageGroup: number[];
-  description: string;
   link: string;
+  shortDescription: string;
+  longDescription: string;
 }
 
 export interface Category {

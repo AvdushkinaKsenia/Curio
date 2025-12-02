@@ -1,10 +1,12 @@
 import { GamesList } from '../../pages/GamesList';
-import { games } from '../../data/games';
+import { useGames } from '../../hooks/useGames';
 
 export default function MathPage() {
-  const mathGames = games.filter(game => game.category === 'Математика');
-  
-  return (
-    <GamesList games={mathGames} categoryTitle="Математика" />
-  );
+  const { games, loading } = useGames();
+
+  if (loading) return <div>Загрузка игр...</div>;
+
+  const mathGames = games.filter(game => game.category === 'Буквы');
+
+  return <GamesList games={mathGames} categoryTitle="Буквы" />;
 }
