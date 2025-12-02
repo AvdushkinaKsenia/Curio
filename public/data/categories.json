@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Развивающие",
+    "image": "/Curio/images/categories/razvitie.jpeg",
+    "link": "/games?category=Развивающие"
+  },
+  {
+    "id": 2,
+    "title": "Головоломки",
+    "image": "/Curio/images/categories/golovolom.jpeg",
+    "link": "/games?category=Головоломки"
+  },
+  {
+    "id": 3,
+    "title": "Творчество",
+    "image": "/Curio/images/categories/tvorch.jpg",
+    "link": "/games?category=Творчество"
+  }
+]

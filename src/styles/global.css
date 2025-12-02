@@ -84,7 +84,16 @@ button:disabled {
     width: 200px;
   }
 
-  .gamesGrid, .categoriesGrid {
-    grid-template-columns: 1fr;
+  .categoriesContainer {
+    padding: 2rem;
+    max-width: 1200px; /* увеличиваем ширину для сетки 3 колонок */
+    margin: 0 auto;
+  }
+
+  .categoriesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
   }
 }

@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import CategoryCard from '../components/CategoryCard/CategoryCard';
-import { categories } from '../data/games';
+import { Category } from '../types/game';
 
 const CategoriesPage: React.FC = () => {
+  const [categories, setCategories] = useState<Category[]>([]);
   const navigate = useNavigate();
 
-  const handleCategoryClick = (category: string) => {
-    navigate(`/games?category=${category}`); // Переход на страницу с играми по выбранной категории
+  useEffect(() => {
+    fetch('/Curio/data/categories.json')
+      .then(res => res.json())
+      .then(data => setCategories(data))
+      .catch(err => console.error('Ошибка загрузки категорий:', err));
+  }, []);
+
+  const handleCategoryClick = (link: string) => {
+    navigate(link);
   };
 
   return (
@@ -17,11 +25,11 @@ const CategoriesPage: React.FC = () => {
       <main className="categoriesContainer">
         <h1>Категории</h1>
         <div className="categoriesGrid">
-          {categories.map((category) => (
+          {categories.map(category => (
             <CategoryCard
               key={category.id}
               category={category}
-              onClick={() => handleCategoryClick(category.title)}
+              onClick={() => handleCategoryClick(category.link)}
             />
           ))}
         </div>
