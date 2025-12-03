@@ -27,8 +27,9 @@ class SearchEngine:
 
     def search(self, query: str, top_k=10, max_distance=0.85):
         results = []
+        seen_ids = set()
 
-        # Если короткий запрос (1-2 слова) → поиск по ключевым словам
+        # --- 1. Поиск по ключевым словам для коротких запросов ---
         if len(query.split()) <= 2:
             q_lower = query.lower()
             for g in self.games:
@@ -46,18 +47,18 @@ class SearchEngine:
                         "link": g.get("link", ""),
                         "distance": 0
                     })
+                    seen_ids.add(g["id"])
 
-            # Если ничего не найдено по ключевым словам → fallback на эмбеддинги
-            if results:
-                return results[:top_k]
-            # else → fall through на эмбеддинговый поиск ниже
-
-        # Эмбеддинговый поиск
+        # --- 2. Эмбеддинговый поиск ---
         emb = self.embedder.encode(query)
-        ids, dist = self.index.search(emb, top_k)
+        ids, dist = self.index.search(emb, top_k*2)  # берём больше, чтобы компенсировать дубликаты
 
         for j, i in enumerate(ids):
             g = self.games[i]
+            if g["id"] in seen_ids:
+                continue  # пропускаем уже добавленные
+            if dist[j] > max_distance:
+                continue
             results.append({
                 "id": g["id"],
                 "title": g["title"],
@@ -69,5 +70,23 @@ class SearchEngine:
                 "link": g.get("link", ""),
                 "distance": float(dist[j])
             })
+            seen_ids.add(g["id"])
+            if len(results) >= top_k:
+                break
+
+        # --- 3. Если результата нет — выдаём просто топ-K любых игр ---
+        if not results:
+            for g in self.games[:top_k]:
+                results.append({
+                    "id": g["id"],
+                    "title": g["title"],
+                    "description": g.get("description", ""),
+                    "shortDescription": g.get("shortDescription", ""),
+                    "longDescription": g.get("longDescription", ""),
+                    "category": g.get("category", ""),
+                    "image": g.get("image", ""),
+                    "link": g.get("link", ""),
+                    "distance": -1  # показывает, что совпадений по запросу нет
+                })
 
         return results[:top_k]
