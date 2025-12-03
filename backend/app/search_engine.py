@@ -26,6 +26,11 @@ class SearchEngine:
         return [{
             "id": self.games[i]["id"],
             "title": self.games[i]["title"],
-            "description": self.games[i]["description"],
+            "description": self.games[i].get("description", ""),
+            "shortDescription": self.games[i].get("shortDescription", ""),
+            "longDescription": self.games[i].get("longDescription", ""),
+            "category": self.games[i].get("category", ""),
+            "image": self.games[i].get("image", ""),
+            "link": self.games[i].get("link", ""),
             "distance": float(dist[j])
         } for j, i in enumerate(ids)]

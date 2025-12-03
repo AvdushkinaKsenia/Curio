@@ -28,11 +28,11 @@ const GamesPage: React.FC = () => {
   useEffect(() => {
     fetch('/Curio/data/games.json')
       .then(res => res.json())
-      .then(data => {
-        const formatted = data.map((game: any) => ({
+      .then((data: Game[]) => {
+        const formatted = data.map(game => ({
           ...game,
-          shortDescription: game.shortDescription || game.description,
-          longDescription: game.longDescription || game.description
+          shortDescription: game.shortDescription || game.longDescription || "",
+          longDescription: game.longDescription || game.shortDescription || ""
         }));
         setGames(formatted);
         setFilteredGames(formatted);
@@ -44,44 +44,42 @@ const GamesPage: React.FC = () => {
   useEffect(() => {
     fetch('/Curio/data/categories.json')
       .then(res => res.json())
-      .then(data => setCategories(data))
+      .then((data: Category[]) => setCategories(data))
       .catch(err => console.error('Ошибка загрузки категорий:', err));
   }, []);
 
-  // -------------------------------
-  // 🔥 НЕЙРОННЫЙ ПОИСК + ФИЛЬТРЫ
-  // -------------------------------
   useEffect(() => {
-    // Если поле поиска пустое — обычная фильтрация по категориям
-    if (!searchTerm.trim()) {
-      let filtered = [...games];
-
-      if (selectedCategory && !showAllCategories) {
-        filtered = filtered.filter(game => game.category === selectedCategory);
+    const fetchResults = async () => {
+      if (!searchTerm.trim()) {
+        // Фильтрация локально по категориям
+        let filtered = [...games];
+        if (selectedCategory && !showAllCategories) {
+          filtered = filtered.filter(game => game.category === selectedCategory);
+        }
+        setFilteredGames(filtered);
+        return;
       }
 
-      setFilteredGames(filtered);
-      return;
-    }
+      try {
+        const res = await fetch(`http://localhost:8000/search?q=${encodeURIComponent(searchTerm)}`);
+        if (!res.ok) throw new Error('Сервер вернул ошибку');
+        const data: { results: Game[] } = await res.json();
 
-    // Если есть строка поиска → вызываем backend API
-    fetch(`http://localhost:8000/search?q=${encodeURIComponent(searchTerm)}`)
-      .then(res => res.json())
-      .then(data => {
         let results = data.results;
 
-        // Дополнительная фильтрация по категории
         if (selectedCategory && !showAllCategories) {
-          results = results.filter((g: any) => g.category === selectedCategory);
+          results = results.filter(game => game.category === selectedCategory);
         }
 
         setFilteredGames(results);
-      })
-      .catch(err => console.error('Ошибка нейропоиска:', err));
+      } catch (err) {
+        console.error('Ошибка нейропоиска:', err);
+        setFilteredGames([]);
+      }
+    };
 
+    fetchResults();
   }, [searchTerm, selectedCategory, showAllCategories, games]);
-
-  // -------------------------------
 
   const handleGameClick = (link: string) => {
     window.open(link, '_blank');
