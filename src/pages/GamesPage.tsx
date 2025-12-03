@@ -48,24 +48,40 @@ const GamesPage: React.FC = () => {
       .catch(err => console.error('Ошибка загрузки категорий:', err));
   }, []);
 
-  // Фильтрация игр по категории и поиску
+  // -------------------------------
+  // 🔥 НЕЙРОННЫЙ ПОИСК + ФИЛЬТРЫ
+  // -------------------------------
   useEffect(() => {
-    let filtered = [...games];
+    // Если поле поиска пустое — обычная фильтрация по категориям
+    if (!searchTerm.trim()) {
+      let filtered = [...games];
 
-    // Фильтрация по категории
-    if (selectedCategory && !showAllCategories) {
-      filtered = filtered.filter(game => game.category === selectedCategory);
+      if (selectedCategory && !showAllCategories) {
+        filtered = filtered.filter(game => game.category === selectedCategory);
+      }
+
+      setFilteredGames(filtered);
+      return;
     }
 
-    // Фильтрация по поиску
-    if (searchTerm.trim() !== '') {
-      filtered = filtered.filter(game =>
-        game.title.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
+    // Если есть строка поиска → вызываем backend API
+    fetch(`http://localhost:8000/search?q=${encodeURIComponent(searchTerm)}`)
+      .then(res => res.json())
+      .then(data => {
+        let results = data.results;
 
-    setFilteredGames(filtered);
-  }, [games, selectedCategory, showAllCategories, searchTerm]);
+        // Дополнительная фильтрация по категории
+        if (selectedCategory && !showAllCategories) {
+          results = results.filter((g: any) => g.category === selectedCategory);
+        }
+
+        setFilteredGames(results);
+      })
+      .catch(err => console.error('Ошибка нейропоиска:', err));
+
+  }, [searchTerm, selectedCategory, showAllCategories, games]);
+
+  // -------------------------------
 
   const handleGameClick = (link: string) => {
     window.open(link, '_blank');
@@ -83,6 +99,7 @@ const GamesPage: React.FC = () => {
 
       <main className="gamesContainer">
         <div className="gamesPageWrapper">
+
           {/* Боковое меню */}
           <CategoriesSidebar
             onSelectCategory={(cat: string | null | 'allCategories') => {
@@ -97,7 +114,7 @@ const GamesPage: React.FC = () => {
             selectedCategory={showAllCategories ? 'allCategories' : selectedCategory}
           />
 
-          {/* Правая колонка */}
+          {/* Правая часть */}
           <div style={{ flex: 1 }}>
             <h1>{headerTitle}</h1>
 
@@ -130,6 +147,7 @@ const GamesPage: React.FC = () => {
               </div>
             )}
           </div>
+
         </div>
       </main>
     </div>
