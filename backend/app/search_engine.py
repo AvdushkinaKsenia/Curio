@@ -11,19 +11,19 @@ class SearchEngine:
     def __init__(self):
         self.embedder = TextEmbedder()
 
-        # загрузка игр
+        # Загрузка игр
         with open(DATA_DIR / "games.json", "r", encoding="utf-8") as f:
             self.games = json.load(f)
 
-        # создание объединённого текста для эмбеддингов
+        # Создание объединённого текста для эмбеддингов
         self.game_texts = [
             f"{g['title']} {g.get('shortDescription','')} {g.get('longDescription','')} {g.get('category','')}"
             for g in self.games
         ]
 
-        # загрузка эмбеддингов и индекса
+        # Загрузка эмбеддингов и индекса
         self.embeddings = np.load(DATA_DIR / "game_embeddings.npy")
-        self.index = FaissIndex.load(str(DATA_DIR / "game_faiss.index"))
+        self.index = FaissIndex.load(DATA_DIR / "game_faiss.index")
 
     def search(self, query: str, top_k=10, max_distance=0.85):
         emb = self.embedder.encode(query)

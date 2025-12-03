@@ -3,13 +3,29 @@ from .preprocessing import clean_text
 
 class TextEmbedder:
     def __init__(self):
-        # Более мощная модель для embeddings
-        self.model = SentenceTransformer("sentence-transformers/all-mpnet-base-v2")
+        # Новая модель, скачивается автоматически
+        self.model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
     def encode(self, text: str):
+        """Эмбеддинг одной строки"""
         clean = clean_text(text)
-        return self.model.encode([clean])[0]
+        emb = self.model.encode(
+            [clean],
+            show_progress_bar=False,
+            convert_to_numpy=True,
+            device="cpu",
+            batch_size=1,
+        )
+        return emb[0]
 
     def encode_batch(self, texts):
+        """Эмбеддинг списка строк"""
         cleaned = [clean_text(t) for t in texts]
-        return self.model.encode(cleaned)
+        embeddings = self.model.encode(
+            cleaned,
+            show_progress_bar=True,
+            convert_to_numpy=True,
+            device="cpu",
+            batch_size=16,
+        )
+        return embeddings
