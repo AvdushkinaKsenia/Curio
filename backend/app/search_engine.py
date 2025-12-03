@@ -15,22 +15,35 @@ class SearchEngine:
         with open(DATA_DIR / "games.json", "r", encoding="utf-8") as f:
             self.games = json.load(f)
 
+        # создание объединённого текста для эмбеддингов
+        self.game_texts = [
+            f"{g['title']} {g.get('shortDescription','')} {g.get('longDescription','')} {g.get('category','')}"
+            for g in self.games
+        ]
+
         # загрузка эмбеддингов и индекса
         self.embeddings = np.load(DATA_DIR / "game_embeddings.npy")
         self.index = FaissIndex.load(str(DATA_DIR / "game_faiss.index"))
 
-    def search(self, query: str, top_k=5):
+    def search(self, query: str, top_k=10, max_distance=0.85):
         emb = self.embedder.encode(query)
         ids, dist = self.index.search(emb, top_k)
 
-        return [{
-            "id": self.games[i]["id"],
-            "title": self.games[i]["title"],
-            "description": self.games[i].get("description", ""),
-            "shortDescription": self.games[i].get("shortDescription", ""),
-            "longDescription": self.games[i].get("longDescription", ""),
-            "category": self.games[i].get("category", ""),
-            "image": self.games[i].get("image", ""),
-            "link": self.games[i].get("link", ""),
-            "distance": float(dist[j])
-        } for j, i in enumerate(ids)]
+        results = []
+        for j, i in enumerate(ids):
+            if dist[j] > max_distance:
+                continue  # фильтрация нерелевантных
+            g = self.games[i]
+            results.append({
+                "id": g["id"],
+                "title": g["title"],
+                "description": g.get("description", ""),
+                "shortDescription": g.get("shortDescription", ""),
+                "longDescription": g.get("longDescription", ""),
+                "category": g.get("category", ""),
+                "image": g.get("image", ""),
+                "link": g.get("link", ""),
+                "distance": float(dist[j])
+            })
+
+        return results
