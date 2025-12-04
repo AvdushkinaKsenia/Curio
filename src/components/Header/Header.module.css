@@ -26,46 +26,62 @@
   position: relative;
 }
 
+/* Логотип */
 .logo {
   width: 100px;
   cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
+.logo:hover {
+  transform: scale(1.1);
+}
+
+/* Кнопка "О нас" */
 .link {
   color: #3D0000;
   text-decoration: none;
   font-size: 1.1rem;
-  transition: all 0.2s;
+  transition: all 0.25s ease;
   padding: 6px;
   border-radius: 8px;
-}
-
-.link:hover {
-  background-color: #FF8F40;
-  color: white;
-  font-weight: bold;
   cursor: pointer;
 }
 
+.link:hover {
+  transform: scale(1.1);
+  background-color: #FF8F40;
+  color: white;
+  font-weight: bold;
+}
+
+/* Поисковая строка */
 .search-input {
   width: 200px;
-  min-width: 200px;
-  max-width: 400px;
   height: 37px;
   font-size: 15px;
   padding: 0 12px;
   border-radius: 8px;
   border: 1px solid #ddd;
   transition: width 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: text;
+  box-sizing: border-box;
+}
+
+.search-input:hover {
+  width: 220px;
+  border-color: #FF8F40;
+  box-shadow: 0 0 5px rgba(255,143,64,0.2);
 }
 
 .search-input:focus {
   width: 300px;
   outline: none;
   border-color: #FF8F40;
-  box-shadow: 0 0 5px rgba(255,143,64,0.5);
+  box-shadow: 0 0 8px rgba(255,143,64,0.4);
 }
 
+/* Аватар пользователя */
 .avatar {
   width: 40px;
   height: 40px;
@@ -85,6 +101,7 @@
   transform: scale(1.1);
 }
 
+/* Меню пользователя */
 .userMenu {
   position: absolute;
   top: 50px;

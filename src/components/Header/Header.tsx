@@ -36,7 +36,6 @@ const Header: React.FC<HeaderProps> = ({ searchTerm, setSearchTerm }) => {
   }, []);
 
   const handleAvatarClick = () => setShowMenu(prev => !prev);
-
   const handleLogoClick = () => navigate('/games?all=true');
 
   return (
@@ -47,7 +46,6 @@ const Header: React.FC<HeaderProps> = ({ searchTerm, setSearchTerm }) => {
           alt="Кьюрио"
           className={styles.logo}
           onClick={handleLogoClick}
-          style={{ cursor: 'pointer' }}
         />
       </div>
 

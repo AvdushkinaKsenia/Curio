@@ -19,18 +19,16 @@ const CategoriesSidebar: React.FC<CategoriesSidebarProps> = ({
       <div
         onClick={() => onSelectCategory && onSelectCategory(null)}
         className={`${styles.categoryItem} ${selectedCategory === null ? styles.active : ''}`}
-        style={{ fontWeight: 'bold', marginBottom: '0.5rem', cursor: 'pointer' }}
       >
         Все игры
       </div>
 
-      <hr style={{ border: '1px solid #ff8f40', margin: '0.5rem 0 1rem 0' }} />
+      <hr className={styles.divider} />
 
       {/* Кнопка "Все категории" */}
       <div
         onClick={() => onSelectCategory && onSelectCategory('allCategories')}
         className={`${styles.categoryItem} ${selectedCategory === 'allCategories' ? styles.active : ''}`}
-        style={{ marginBottom: '1rem', fontWeight: 'bold', cursor: 'pointer' }}
       >
         Все категории
       </div>
@@ -41,7 +39,6 @@ const CategoriesSidebar: React.FC<CategoriesSidebarProps> = ({
             key={cat.id}
             onClick={() => onSelectCategory && onSelectCategory(cat.title)}
             className={`${styles.categoryItem} ${selectedCategory === cat.title ? styles.active : ''}`}
-            style={{ cursor: 'pointer' }}
           >
             {cat.title}
           </li>

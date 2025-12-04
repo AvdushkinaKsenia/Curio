@@ -6,10 +6,9 @@
   box-shadow: 0 2px 6px rgba(229,107,46,0.2);
 }
 
-h3 {
-  margin-top: 0;
-  color: #3d0000;
-  margin-bottom: 1rem;
+.divider {
+  border: 1px solid #ff8f40;
+  margin: 0.5rem 0 1rem 0;
 }
 
 ul {
@@ -23,18 +22,21 @@ ul {
   margin-bottom: 0.5rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.25s ease;
 }
 
 .categoryItem:hover {
   background-color: #ff8f40;
   color: white;
   font-weight: bold;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/* Активный элемент (выбранная категория) */
 .active {
   background-color: #ff8f40;
   color: white;
   font-weight: bold;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
