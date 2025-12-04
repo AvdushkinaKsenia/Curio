@@ -5,6 +5,8 @@
   padding: 1rem 2rem;
   background-color: #FFDCC3;
   box-shadow: 0 2px 4px rgba(229,107,46,0.2);
+  position: relative;
+  z-index: 10;
 }
 
 .left {
@@ -21,17 +23,19 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  position: relative;
 }
 
 .logo {
   width: 100px;
+  cursor: pointer;
 }
 
 .link {
   color: #3D0000;
   text-decoration: none;
   font-size: 1.1rem;
-  transition: opacity 0.2s;
+  transition: all 0.2s;
   padding: 6px;
   border-radius: 8px;
 }
@@ -40,6 +44,7 @@
   background-color: #FF8F40;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .search-input {
@@ -61,21 +66,51 @@
   box-shadow: 0 0 5px rgba(255,143,64,0.5);
 }
 
-.user {
-  display: flex;
-  align-items: center;
-}
-
 .avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: white;
-  color: #FF8F40;
+  background: linear-gradient(135deg, #FF8F40, #FFDCC3);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
   font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.avatar:hover {
+  transform: scale(1.1);
+}
+
+.userMenu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 160px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 100;
+}
+
+.userMenu.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.userMenu p {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
 }
 
 @media (max-width: 1024px) {

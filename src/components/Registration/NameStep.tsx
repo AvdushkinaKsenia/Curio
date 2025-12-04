@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Registration.module.css';
 import CurioWave from '../../assets/CurioWave.svg';
+import { UserData } from '../../types/game';
 
 interface NameStepProps {
   name: string;
@@ -9,6 +10,11 @@ interface NameStepProps {
 }
 
 const NameStep: React.FC<NameStepProps> = ({ name, setName, onNext }) => {
+  const handleNext = () => {
+    localStorage.setItem('userName', name.trim());
+    onNext();
+  };
+
   return (
     <div className={styles.registrationContainer}>
       <div className={`${styles.characterSection} ${styles.characterSectionName}`}>
@@ -25,7 +31,7 @@ const NameStep: React.FC<NameStepProps> = ({ name, setName, onNext }) => {
           className={styles.nameInput}
         />
         <button 
-          onClick={onNext} 
+          onClick={handleNext} 
           className={styles.nextButton}
           disabled={!name.trim()}
         >

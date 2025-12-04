@@ -16,13 +16,20 @@ const ageGroups = [
 ];
 
 const AgeStep: React.FC<AgeStepProps> = ({ age, setAge, onNext, name }) => {
+  const handleNext = () => {
+    if (age !== null) {
+      localStorage.setItem('userAge', age.toString());
+      onNext();
+    }
+  };
+
   return (
     <div className={styles.registrationContainer}>
       <div className={`${styles.characterSection} ${styles.characterSectionAge}`}>
         <img src={CurioQuestion} alt="Кьюрио" className={styles.characterImage} />
       </div>
       <div className={styles.formSection}>
-        <h1 className={styles.title}>Отлично! <br></br> <span className={styles.curioText}>{name}</span>, сколько тебе лет?</h1>
+        <h1 className={styles.title}>Отлично! <br /> <span className={styles.curioText}>{name}</span>, сколько тебе лет?</h1>
         <div className={styles.ageOptions}>
           {ageGroups.map((group) => (
             <label key={group.id} className={styles.ageOption}>
@@ -37,9 +44,9 @@ const AgeStep: React.FC<AgeStepProps> = ({ age, setAge, onNext, name }) => {
           ))}
         </div>
         <button 
-          onClick={onNext} 
+          onClick={handleNext} 
           className={styles.nextButton}
-          disabled={!age}
+          disabled={age === null}
         >
           Далее →
         </button>
