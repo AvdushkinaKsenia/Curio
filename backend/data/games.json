@@ -22,7 +22,7 @@
   {
     "id": 3,
     "title": "Лабиринт чисел",
-    "image": "/Curio/images/games/number_maze.png",
+    "image": "/Curio/images/games/number_maze.jpg",
     "category": "Математика",
     "ageGroup": [6,7,8],
     "shortDescription": "Весёлый лабиринт с числами",
@@ -42,7 +42,7 @@
   {
     "id": 5,
     "title": "Математическая башня",
-    "image": "/Curio/images/games/math_tower.png",
+    "image": "/Curio/images/games/math_tower.jpg",
     "category": "Математика",
     "ageGroup": [6,7,8],
     "shortDescription": "Собери башню из чисел",
@@ -62,7 +62,7 @@
   {
     "id": 7,
     "title": "Сказочный лес",
-    "image": "/Curio/images/games/fairy_forest.png",
+    "image": "/Curio/images/games/fairy_forest.jpg",
     "category": "Развивающие",
     "ageGroup": [4,5,6,7],
     "shortDescription": "Исследуй волшебный лес",
@@ -82,7 +82,7 @@
   {
     "id": 9,
     "title": "Звуковая память",
-    "image": "/Curio/images/games/sound_memory.png",
+    "image": "/Curio/images/games/sound_memory.jpg",
     "category": "Головоломки",
     "ageGroup": [5,6,7,8],
     "shortDescription": "Запоминай звуки и последовательности",
@@ -92,7 +92,7 @@
   {
     "id": 10,
     "title": "Пазл-магнит",
-    "image": "/Curio/images/games/magnet_puzzle.png",
+    "image": "/Curio/images/games/magnet_puzzle.jpg",
     "category": "Фигуры",
     "ageGroup": [4,5,6],
     "shortDescription": "Собери фигуры на магнитной доске",
@@ -102,7 +102,7 @@
   {
     "id": 11,
     "title": "Танец цветов",
-    "image": "/Curio/images/games/dance_colors.png",
+    "image": "/Curio/images/games/dance_colors.jpg",
     "category": "Развивающие",
     "ageGroup": [4,5,6,7],
     "shortDescription": "Развивай координацию и внимание",
@@ -112,7 +112,7 @@
   {
     "id": 12,
     "title": "Логическая цепочка",
-    "image": "/Curio/images/games/logic_chain.png",
+    "image": "/Curio/images/games/logic_chain.jpg",
     "category": "Головоломки",
     "ageGroup": [6,7,8],
     "shortDescription": "Соединяй элементы логически",
@@ -122,7 +122,7 @@
   {
     "id": 13,
     "title": "Творческий калейдоскоп",
-    "image": "/Curio/images/games/creative_kaleidoscope.png",
+    "image": "/Curio/images/games/creative_kaleidoscope.jpg",
     "category": "Творчество",
     "ageGroup": [5,6,7],
     "shortDescription": "Создавай красивые узоры",
@@ -132,7 +132,7 @@
   {
     "id": 14,
     "title": "Счет в облаках",
-    "image": "/Curio/images/games/cloud_count.png",
+    "image": "/Curio/images/games/cloud_count.jpeg",
     "category": "Математика",
     "ageGroup": [4,5,6],
     "shortDescription": "Считай облака",
@@ -142,7 +142,7 @@
   {
     "id": 15,
     "title": "Путешествие маленьких звезд",
-    "image": "/Curio/images/games/star_journey.png",
+    "image": "/Curio/images/games/star_journey.jpeg",
     "category": "Развивающие",
     "ageGroup": [4,5,6],
     "shortDescription": "Исследуй космос с малышами",
@@ -152,7 +152,7 @@
   {
     "id": 16,
     "title": "Пазл морских глубин",
-    "image": "/Curio/images/games/sea_puzzle.png",
+    "image": "/Curio/images/games/sea_puzzle.jpeg",
     "category": "Головоломки",
     "ageGroup": [5,6,7],
     "shortDescription": "Собери морской мир",
@@ -162,7 +162,7 @@
   {
     "id": 17,
     "title": "Башня чисел",
-    "image": "/Curio/images/games/number_tower.png",
+    "image": "/Curio/images/games/number_tower.jpg",
     "category": "Математика",
     "ageGroup": [6,7,8],
     "shortDescription": "Строй башню из чисел",
@@ -172,7 +172,7 @@
   {
     "id": 18,
     "title": "Фигурная мозаика",
-    "image": "/Curio/images/games/shape_mosaic.png",
+    "image": "/Curio/images/games/shape_mosaic.jpg",
     "category": "Фигуры",
     "ageGroup": [4,5,6],
     "shortDescription": "Создай красивую мозаику",
@@ -192,7 +192,7 @@
   {
     "id": 20,
     "title": "Приключения в замке",
-    "image": "/Curio/images/games/castle_adventure.png",
+    "image": "/Curio/images/games/castle_adventure.jpg",
     "category": "Развивающие",
     "ageGroup": [5,6,7],
     "shortDescription": "Исследуй загадочный замок",
@@ -202,7 +202,7 @@
   {
     "id": 21,
     "title": "Логические лабиринты",
-    "image": "/Curio/images/games/logic_maze.png",
+    "image": "/Curio/images/games/logic_maze.jpg",
     "category": "Головоломки",
     "ageGroup": [6,7,8],
     "shortDescription": "Пройди все лабиринты",
@@ -212,7 +212,7 @@
   {
     "id": 22,
     "title": "Математические джунгли",
-    "image": "/Curio/images/games/math_jungle.png",
+    "image": "/Curio/images/games/math_jungle.jpg",
     "category": "Математика",
     "ageGroup": [6,7,8],
     "shortDescription": "Считай и решай задачки",
@@ -222,7 +222,7 @@
   {
     "id": 23,
     "title": "Фигурные истории",
-    "image": "/Curio/images/games/shape_stories.png",
+    "image": "/Curio/images/games/shape_stories.jpg",
     "category": "Фигуры",
     "ageGroup": [4,5,6],
     "shortDescription": "Создавай истории из фигур",
@@ -232,7 +232,7 @@
   {
     "id": 24,
     "title": "Творческий лес",
-    "image": "/Curio/images/games/creative_forest.png",
+    "image": "/Curio/images/games/creative_forest.webp",
     "category": "Творчество",
     "ageGroup": [5,6,7],
     "shortDescription": "Рисуй и придумывай",
@@ -242,7 +242,7 @@
   {
     "id": 25,
     "title": "Звёздный путь",
-    "image": "/Curio/images/games/star_path.png",
+    "image": "/Curio/images/games/star_path.jpg",
     "category": "Развивающие",
     "ageGroup": [4,5,6],
     "shortDescription": "Следуй за звёздами",
@@ -252,7 +252,7 @@
   {
     "id": 26,
     "title": "Головоломка с замками",
-    "image": "/Curio/images/games/lock_puzzle.png",
+    "image": "/Curio/images/games/lock_puzzle.jpeg",
     "category": "Головоломки",
     "ageGroup": [6,7,8],
     "shortDescription": "Разгадай замковые головоломки",
@@ -262,7 +262,7 @@
   {
     "id": 27,
     "title": "Счёт и приключения",
-    "image": "/Curio/images/games/count_adventure.png",
+    "image": "/Curio/images/games/count_adventure.jpeg",
     "category": "Математика",
     "ageGroup": [5,6,7],
     "shortDescription": "Решай задачи в приключении",
@@ -272,7 +272,7 @@
   {
     "id": 28,
     "title": "Фигурная фантазия",
-    "image": "/Curio/images/games/shape_fantasy.png",
+    "image": "/Curio/images/games/shape_fantasy.jpg",
     "category": "Фигуры",
     "ageGroup": [4,5,6],
     "shortDescription": "Комбинируй фигуры и создавай",
@@ -302,7 +302,7 @@
   {
     "id": 31,
     "title": "Цветные цепочки",
-    "image": "/Curio/images/games/color_chain.png",
+    "image": "/Curio/images/games/color_chain.jpg",
     "category": "Головоломки",
     "ageGroup": [5,6,7],
     "shortDescription": "Соединяй цвета логически",
@@ -312,7 +312,7 @@
   {
     "id": 32,
     "title": "Математические острова",
-    "image": "/Curio/images/games/math_islands.png",
+    "image": "/Curio/images/games/math_islands.webp",
     "category": "Математика",
     "ageGroup": [6,7,8],
     "shortDescription": "Считай на островах",
@@ -322,7 +322,7 @@
   {
     "id": 33,
     "title": "Фигурные приключения",
-    "image": "/Curio/images/games/shape_adventure.png",
+    "image": "/Curio/images/games/shape_adventure.jpg",
     "category": "Фигуры",
     "ageGroup": [4,5,6],
     "shortDescription": "Игра с формами и фигурами",
@@ -332,7 +332,7 @@
   {
     "id": 34,
     "title": "Волшебный холст",
-    "image": "/Curio/images/games/magic_canvas.png",
+    "image": "/Curio/images/games/magic_canvas.jpg",
     "category": "Творчество",
     "ageGroup": [5,6,7],
     "shortDescription": "Рисуй волшебные картины",
@@ -352,7 +352,7 @@
   {
     "id": 36,
     "title": "Мосты разума",
-    "image": "/Curio/images/games/logic_bridges.png",
+    "image": "/Curio/images/games/logic_bridges.webp",
     "category": "Логика",
     "ageGroup": [6,7,8],
     "shortDescription": "Строй мосты логически",
@@ -372,7 +372,7 @@
   {
     "id": 38,
     "title": "Цепочка решений",
-    "image": "/Curio/images/games/logic_chain2.png",
+    "image": "/Curio/images/games/logic_chain2.jpg",
     "category": "Логика",
     "ageGroup": [6,7,8],
     "shortDescription": "Соединяй события логически",
@@ -382,7 +382,7 @@
   {
     "id": 39,
     "title": "Логический лабиринт",
-    "image": "/Curio/images/games/logic_maze2.png",
+    "image": "/Curio/images/games/logic_maze2.jpg",
     "category": "Логика",
     "ageGroup": [6,7,8],
     "shortDescription": "Пройди лабиринт, используя логику",
@@ -392,7 +392,7 @@
   {
     "id": 40,
     "title": "Матемагический квест",
-    "image": "/Curio/images/games/logic_math_quest.png",
+    "image": "/Curio/images/games/logic_math_quest.jpg",
     "category": "Логика",
     "ageGroup": [7,8,9],
     "shortDescription": "Решай логические задачи с числами",
