@@ -1,29 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Category } from '../../types/game';
 import styles from './CategoriesSidebar.module.css';
 
 interface CategoriesSidebarProps {
+  categories: Category[];
   onSelectCategory?: (category: string | 'allCategories' | null) => void;
   selectedCategory?: string | 'allCategories' | null;
 }
 
-const CategoriesSidebar: React.FC<CategoriesSidebarProps> = ({ onSelectCategory, selectedCategory }) => {
-  const [categories, setCategories] = useState<Category[]>([]);
-
-  useEffect(() => {
-    fetch('/Curio/data/categories.json')
-      .then(res => res.json())
-      .then(data => setCategories(data))
-      .catch(err => console.error('Ошибка загрузки категорий:', err));
-  }, []);
-
+const CategoriesSidebar: React.FC<CategoriesSidebarProps> = ({
+  categories,
+  onSelectCategory,
+  selectedCategory
+}) => {
   return (
     <div className={styles.sidebar}>
       {/* Кнопка "Все игры" */}
       <div
         onClick={() => onSelectCategory && onSelectCategory(null)}
         className={`${styles.categoryItem} ${selectedCategory === null ? styles.active : ''}`}
-        style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}
+        style={{ fontWeight: 'bold', marginBottom: '0.5rem', cursor: 'pointer' }}
       >
         Все игры
       </div>
@@ -45,6 +41,7 @@ const CategoriesSidebar: React.FC<CategoriesSidebarProps> = ({ onSelectCategory,
             key={cat.id}
             onClick={() => onSelectCategory && onSelectCategory(cat.title)}
             className={`${styles.categoryItem} ${selectedCategory === cat.title ? styles.active : ''}`}
+            style={{ cursor: 'pointer' }}
           >
             {cat.title}
           </li>

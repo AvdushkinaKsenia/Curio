@@ -24,9 +24,9 @@ const GamesPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showAllCategories, setShowAllCategories] = useState(false);
 
-  // Загрузка игр
+  // Загрузка игр с бэкенда
   useEffect(() => {
-    fetch('/Curio/data/games.json')
+    fetch('http://localhost:8000/games')
       .then(res => res.json())
       .then((data: Game[]) => {
         const formatted = data.map(game => ({
@@ -40,9 +40,9 @@ const GamesPage: React.FC = () => {
       .catch(err => console.error('Ошибка загрузки игр:', err));
   }, []);
 
-  // Загрузка категорий
+  // Загрузка категорий с бэкенда
   useEffect(() => {
-    fetch('/Curio/data/categories.json')
+    fetch('http://localhost:8000/categories')
       .then(res => res.json())
       .then((data: Category[]) => setCategories(data))
       .catch(err => console.error('Ошибка загрузки категорий:', err));
@@ -51,7 +51,6 @@ const GamesPage: React.FC = () => {
   useEffect(() => {
     const fetchResults = async () => {
       if (!searchTerm.trim()) {
-        // Фильтрация локально по категориям
         let filtered = [...games];
         if (selectedCategory && !showAllCategories) {
           filtered = filtered.filter(game => game.category === selectedCategory);
@@ -98,8 +97,9 @@ const GamesPage: React.FC = () => {
       <main className="gamesContainer">
         <div className="gamesPageWrapper">
 
-          {/* Боковое меню */}
+          {/* Передаем категории в сайдбар */}
           <CategoriesSidebar
+            categories={categories}
             onSelectCategory={(cat: string | null | 'allCategories') => {
               if (cat === 'allCategories') {
                 setShowAllCategories(true);
@@ -112,7 +112,6 @@ const GamesPage: React.FC = () => {
             selectedCategory={showAllCategories ? 'allCategories' : selectedCategory}
           />
 
-          {/* Правая часть */}
           <div style={{ flex: 1 }}>
             <h1>{headerTitle}</h1>
 
