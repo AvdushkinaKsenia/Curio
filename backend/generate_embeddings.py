@@ -12,9 +12,16 @@ with open(DATA_DIR / "games.json", "r", encoding="utf-8") as f:
     games = json.load(f)
 
 texts = []
+
 for game in games:
-    desc = game.get("longDescription") or game.get("shortDescription") or ""
-    texts.append(f"{game['title']}. {desc}")
+    text = f"""
+    Название: {game['title']}
+    Категория: {game['category']}
+    Возраст: {', '.join(map(str, game.get('ageGroup', [])))}
+    Кратко: {game.get('shortDescription', '')}
+    Описание: {game.get('longDescription', '')}
+    """
+    texts.append(text)
 
 embedder = TextEmbedder()
 

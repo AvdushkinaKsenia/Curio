@@ -1,3 +1,4 @@
+import numpy as np
 from sentence_transformers import SentenceTransformer
 from .preprocessing import clean_text
 
@@ -16,6 +17,8 @@ class TextEmbedder:
             device="cpu",
             batch_size=1,
         )
+        
+        emb = emb / np.linalg.norm(emb, axis=1, keepdims=True) # cosine normalization
         return emb[0]
 
     def encode_batch(self, texts):
@@ -27,5 +30,8 @@ class TextEmbedder:
             convert_to_numpy=True,
             device="cpu",
             batch_size=16,
+        )
+        embeddings = embeddings / np.linalg.norm(
+            embeddings, axis=1, keepdims=True
         )
         return embeddings

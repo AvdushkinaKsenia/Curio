@@ -15,78 +15,67 @@ class SearchEngine:
         with open(DATA_DIR / "games.json", "r", encoding="utf-8") as f:
             self.games = json.load(f)
 
-        # Создание объединённого текста для эмбеддингов
-        self.game_texts = [
-            f"{g['title']} {g.get('shortDescription','')} {g.get('longDescription','')} {g.get('category','')}"
-            for g in self.games
-        ]
-
-        # Загрузка эмбеддингов и индекса
         self.embeddings = np.load(DATA_DIR / "game_embeddings.npy")
         self.index = FaissIndex.load(DATA_DIR / "game_faiss.index")
 
-    def search(self, query: str, top_k=10, max_distance=0.85):
+    def search(self, query: str, top_k=10):
         results = []
         seen_ids = set()
 
-        # --- 1. Поиск по ключевым словам для коротких запросов ---
-        if len(query.split()) <= 2:
-            q_lower = query.lower()
-            for g in self.games:
-                title = g.get("title", "").lower()
-                category = g.get("category", "").lower()
-                if q_lower in title or q_lower in category:
-                    results.append({
-                        "id": g["id"],
-                        "title": g["title"],
-                        "description": g.get("description", ""),
-                        "shortDescription": g.get("shortDescription", ""),
-                        "longDescription": g.get("longDescription", ""),
-                        "category": g.get("category", ""),
-                        "image": g.get("image", ""),
-                        "link": g.get("link", ""),
-                        "distance": 0
-                    })
-                    seen_ids.add(g["id"])
-
-        # --- 2. Эмбеддинговый поиск ---
         emb = self.embedder.encode(query)
-        ids, dist = self.index.search(emb, top_k*2)  # берём больше, чтобы компенсировать дубликаты
+        ids, scores = self.index.search(emb, top_k * 2)
 
-        for j, i in enumerate(ids):
-            g = self.games[i]
-            if g["id"] in seen_ids:
-                continue  # пропускаем уже добавленные
-            if dist[j] > max_distance:
+        q_lower = query.lower()
+
+        for i, score in zip(ids, scores):
+            if i < 0:
                 continue
+
+            game = self.games[i]
+            final_score = float(score)
+
+            title = game["title"].lower()
+            category = game["category"].lower()
+
+            # keyword boost
+            if q_lower in title:
+                final_score += 0.25
+            if q_lower in category:
+                final_score += 0.15
+
+            if final_score < 0.3:
+                continue
+
+            if game["id"] in seen_ids:
+                continue
+
             results.append({
-                "id": g["id"],
-                "title": g["title"],
-                "description": g.get("description", ""),
-                "shortDescription": g.get("shortDescription", ""),
-                "longDescription": g.get("longDescription", ""),
-                "category": g.get("category", ""),
-                "image": g.get("image", ""),
-                "link": g.get("link", ""),
-                "distance": float(dist[j])
+                "id": game["id"],
+                "title": game["title"],
+                "shortDescription": game.get("shortDescription", ""),
+                "longDescription": game.get("longDescription", ""),
+                "category": game.get("category", ""),
+                "image": game.get("image", ""),
+                "link": game.get("link", ""),
+                "score": round(final_score, 3)
             })
-            seen_ids.add(g["id"])
+
+            seen_ids.add(game["id"])
+
             if len(results) >= top_k:
                 break
 
-        # --- 3. Если результата нет — выдаём просто топ-K любых игр ---
+        # fallback
         if not results:
-            for g in self.games[:top_k]:
+            for game in self.games[:top_k]:
                 results.append({
-                    "id": g["id"],
-                    "title": g["title"],
-                    "description": g.get("description", ""),
-                    "shortDescription": g.get("shortDescription", ""),
-                    "longDescription": g.get("longDescription", ""),
-                    "category": g.get("category", ""),
-                    "image": g.get("image", ""),
-                    "link": g.get("link", ""),
-                    "distance": -1  # показывает, что совпадений по запросу нет
+                    "id": game["id"],
+                    "title": game["title"],
+                    "shortDescription": game.get("shortDescription", ""),
+                    "category": game.get("category", ""),
+                    "image": game.get("image", ""),
+                    "link": game.get("link", ""),
+                    "score": 0
                 })
 
-        return results[:top_k]
+        return results

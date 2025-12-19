@@ -4,15 +4,15 @@ from pathlib import Path
 
 class FaissIndex:
     def __init__(self, dim: int):
-        self.index = faiss.IndexFlatL2(dim)
+        self.index = faiss.IndexFlatIP(dim) # Inner Product = cosine similarity
 
     def add(self, embeddings: np.ndarray):
         self.index.add(embeddings.astype("float32"))
 
     def search(self, vector, top_k: int):
         vector = vector.reshape(1, -1).astype("float32")
-        distances, indices = self.index.search(vector, top_k)
-        return indices[0], distances[0]
+        scores, indices = self.index.search(vector, top_k)
+        return indices[0], scores[0]
 
     def save(self, path):
         # Приводим Path к строке, если нужно
