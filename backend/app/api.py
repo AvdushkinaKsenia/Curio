@@ -6,7 +6,6 @@ import json
 
 app = FastAPI(title="Curio Neural Search")
 
-# Разрешаем запросы с фронтенда
 origins = [
     "http://localhost:3000",
 ]
@@ -19,24 +18,29 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Создаём движок один раз
 engine = SearchEngine()
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 
+
 @app.get("/search")
-async def search_games(q: str = Query(..., min_length=1)):
-    results = engine.search(q)
-    return {"results": results}
+async def search_games(query: str = Query(..., min_length=1)):
+    """
+    Нейронный поиск игр по текстовому запросу.
+    Для коротких запросов используется сначала
+    лексический поиск, затем семантический.
+    """
+    return engine.search(query)
+
 
 @app.get("/games")
 async def get_games():
-    """Выдаёт список игр для фронтенда"""
+    """Выдаёт список всех игр"""
     return engine.games
+
 
 @app.get("/categories")
 async def get_categories():
-    """Возвращает список категорий для фронтенда"""
+    """Возвращает список категорий"""
     with open(DATA_DIR / "categories.json", "r", encoding="utf-8") as f:
-        categories = json.load(f)
-    return categories
+        return json.load(f)

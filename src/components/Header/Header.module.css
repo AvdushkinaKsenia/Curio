@@ -1,3 +1,4 @@
+/* Стили для хедера */
 .header {
   display: flex;
   align-items: center;
@@ -17,6 +18,7 @@
   flex: 1 1 auto;
   display: flex;
   justify-content: center;
+  gap: 0.5rem; /* Добавил отступ между полем и кнопкой */
 }
 
 .right {
@@ -79,6 +81,41 @@
   outline: none;
   border-color: #FF8F40;
   box-shadow: 0 0 8px rgba(255,143,64,0.4);
+}
+
+/* Кнопка "Найти"*/
+.searchButton {
+  background-color: #FF8F40;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0 16px;
+  height: 37px;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 4px rgba(229,107,46,0.2);
+  min-width: 80px;
+}
+
+.searchButton:hover {
+  transform: scale(1.1);
+  background-color: #FF5E00;
+  box-shadow: 0 3px 6px rgba(229,107,46,0.3);
+}
+
+.searchButton:active {
+  transform: scale(1);
+}
+
+.searchButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #cccccc;
+  transform: none;
+  box-shadow: none;
 }
 
 /* Аватар пользователя */
@@ -160,5 +197,12 @@
 
   .search-input:focus {
     width: 160px;
+  }
+  
+  .searchButton {
+    height: 34px;
+    font-size: 14px;
+    min-width: 70px;
+    padding: 0 12px;
   }
 }

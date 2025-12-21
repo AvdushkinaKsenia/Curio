@@ -1,32 +1,26 @@
-import { useEffect, useState } from "react";
-
-export interface Game {
-  id: number;
-  title: string;
-  image: string;
-  category: string;
-  ageGroup: number[];
-  shortDescription: string;
-  longDescription: string;
-  link: string;
-}
+import { useState } from "react";
+import { Game } from "../types/game";
 
 export const useGames = () => {
   const [games, setGames] = useState<Game[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    fetch("/Curio/data/games.json")
-      .then(res => res.json())
-      .then(data => {
-        setGames(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Ошибка загрузки игр:", err);
-        setLoading(false);
-      });
-  }, []);
+  const searchGames = async (query: string) => {
+    if (!query.trim()) return;
 
-  return { games, loading };
+    setLoading(true);
+    try {
+      const res = await fetch(
+        `http://localhost:8000/search?query=${encodeURIComponent(query)}`
+      );
+      const data = await res.json();
+      setGames(data);
+    } catch (e) {
+      console.error("Ошибка поиска:", e);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { games, loading, searchGames };
 };

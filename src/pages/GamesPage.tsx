@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import Header from '../components/Header/Header';
-import GameCard from '../components/GameCard/GameCard';
-import CategoriesSidebar from '../components/CategorySidebar/CategoriesSidebar';
-import CategoryCard from '../components/CategoryCard/CategoryCard';
-import { Category } from '../types/game';
+import React, { useEffect, useState } from "react";
+import Header from "../components/Header/Header";
+import GameCard from "../components/GameCard/GameCard";
+import CategoriesSidebar from "../components/CategorySidebar/CategoriesSidebar";
+import CategoryCard from "../components/CategoryCard/CategoryCard";
+import { Category } from "../types/game";
 
 export interface Game {
   id: number;
@@ -20,96 +20,111 @@ const GamesPage: React.FC = () => {
   const [games, setGames] = useState<Game[]>([]);
   const [filteredGames, setFilteredGames] = useState<Game[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
-  const [searchTerm, setSearchTerm] = useState('');
+
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showAllCategories, setShowAllCategories] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  // Загрузка игр с бэкенда
+  /* -------------------- Загрузка игр -------------------- */
   useEffect(() => {
-    fetch('http://localhost:8000/games')
+    fetch("http://localhost:8000/games")
       .then(res => res.json())
       .then((data: Game[]) => {
         const formatted = data.map(game => ({
           ...game,
-          shortDescription: game.shortDescription || game.longDescription || "",
-          longDescription: game.longDescription || game.shortDescription || ""
+          shortDescription:
+            game.shortDescription || game.longDescription || "",
+          longDescription:
+            game.longDescription || game.shortDescription || ""
         }));
         setGames(formatted);
         setFilteredGames(formatted);
       })
-      .catch(err => console.error('Ошибка загрузки игр:', err));
+      .catch(err => console.error("Ошибка загрузки игр:", err));
   }, []);
 
-  // Загрузка категорий с бэкенда
+  /* -------------------- Загрузка категорий -------------------- */
   useEffect(() => {
-    fetch('http://localhost:8000/categories')
+    fetch("http://localhost:8000/categories")
       .then(res => res.json())
       .then((data: Category[]) => setCategories(data))
-      .catch(err => console.error('Ошибка загрузки категорий:', err));
+      .catch(err => console.error("Ошибка загрузки категорий:", err));
   }, []);
 
-  useEffect(() => {
-    const fetchResults = async () => {
-      if (!searchTerm.trim()) {
-        let filtered = [...games];
-        if (selectedCategory && !showAllCategories) {
-          filtered = filtered.filter(game => game.category === selectedCategory);
-        }
-        setFilteredGames(filtered);
-        return;
-      }
+  /* -------------------- Поиск по кнопке -------------------- */
+  const handleSearch = async () => {
+    if (!searchTerm.trim()) {
+      applyCategoryFilter(games);
+      return;
+    }
 
-      try {
-        const res = await fetch(`http://localhost:8000/search?q=${encodeURIComponent(searchTerm)}`);
-        if (!res.ok) throw new Error('Сервер вернул ошибку');
-        const data: { results: Game[] } = await res.json();
+    setLoading(true);
+    try {
+      const res = await fetch(
+        `http://localhost:8000/search?query=${encodeURIComponent(searchTerm)}`
+      );
+      if (!res.ok) throw new Error("Ошибка сервера");
 
-        let results = data.results;
+      const data: Game[] = await res.json();
+      applyCategoryFilter(data);
+    } catch (err) {
+      console.error("Ошибка поиска:", err);
+      setFilteredGames([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-        if (selectedCategory && !showAllCategories) {
-          results = results.filter(game => game.category === selectedCategory);
-        }
+  /* -------------------- Фильтрация по категории -------------------- */
+  const applyCategoryFilter = (list: Game[]) => {
+    let result = [...list];
 
-        setFilteredGames(results);
-      } catch (err) {
-        console.error('Ошибка нейропоиска:', err);
-        setFilteredGames([]);
-      }
-    };
+    if (selectedCategory && !showAllCategories) {
+      result = result.filter(
+        game => game.category === selectedCategory
+      );
+    }
 
-    fetchResults();
-  }, [searchTerm, selectedCategory, showAllCategories, games]);
+    setFilteredGames(result);
+  };
 
+  /* -------------------- Клик по игре -------------------- */
   const handleGameClick = (link: string) => {
-    window.open(link, '_blank');
+    window.open(link, "_blank");
   };
 
   const headerTitle = showAllCategories
-    ? 'Все категории'
+    ? "Все категории"
     : selectedCategory
     ? `Категория: ${selectedCategory}`
-    : 'Игры для тебя';
+    : "Игры для тебя";
 
   return (
     <div className="page">
-      <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <Header
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        onSearch={handleSearch}
+      />
 
       <main className="gamesContainer">
         <div className="gamesPageWrapper">
-
-          {/* Передаем категории в сайдбар */}
           <CategoriesSidebar
             categories={categories}
-            onSelectCategory={(cat: string | null | 'allCategories') => {
-              if (cat === 'allCategories') {
+            selectedCategory={
+              showAllCategories ? "allCategories" : selectedCategory
+            }
+            onSelectCategory={(cat: string | null | "allCategories") => {
+              if (cat === "allCategories") {
                 setShowAllCategories(true);
                 setSelectedCategory(null);
               } else {
                 setShowAllCategories(false);
                 setSelectedCategory(cat);
               }
+              applyCategoryFilter(games);
             }}
-            selectedCategory={showAllCategories ? 'allCategories' : selectedCategory}
           />
 
           <div style={{ flex: 1 }}>
@@ -124,13 +139,16 @@ const GamesPage: React.FC = () => {
                     onClick={() => {
                       setSelectedCategory(category.title);
                       setShowAllCategories(false);
+                      applyCategoryFilter(games);
                     }}
                   />
                 ))}
               </div>
             ) : (
               <div className="gamesGrid">
-                {filteredGames.length > 0 ? (
+                {loading ? (
+                  <p>Поиск...</p>
+                ) : filteredGames.length > 0 ? (
                   filteredGames.map(game => (
                     <GameCard
                       key={game.id}
@@ -144,7 +162,6 @@ const GamesPage: React.FC = () => {
               </div>
             )}
           </div>
-
         </div>
       </main>
     </div>
